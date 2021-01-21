@@ -1,0 +1,50 @@
+[
+    {
+        "product": "apple",
+        "visibilityOnProductList": true
+    },
+    {
+        "product": "banana",
+        "visibilityOnProductList": true
+    },
+    {
+        "product": "potato",
+        "visibilityOnProductList": true
+    },
+    {
+        "product": "orange",
+        "visibilityOnProductList": true
+    },
+    {
+        "product": "kiwi",
+        "visibilityOnProductList": true
+    },
+    {
+        "product": "grape",
+        "visibilityOnProductList": true
+    },
+    {
+        "product": "grapefruit",
+        "visibilityOnProductList": true
+    },
+    {
+        "product": "lemon",
+        "visibilityOnProductList": true
+    },
+    {
+        "product": "pineapple",
+        "visibilityOnProductList": true
+    },
+    {
+        "product": "carrot",
+        "visibilityOnProductList": true
+    },
+    {
+        "product": "tomato",
+        "visibilityOnProductList": true
+    },
+    {
+        "product": "courgette",
+        "visibilityOnProductList": true
+    }
+]

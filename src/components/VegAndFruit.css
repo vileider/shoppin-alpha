@@ -1,0 +1,48 @@
+.masterProductContainer{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex:1;
+    margin-top: 100px;
+}
+.productListObject{
+    background-color: aqua;
+    margin: 1%;
+    width: 199px;
+    /* height: fit-content; */
+    /* min-height: 400px; */
+    max-height: 400px;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: flex-start;
+    justify-content: center;
+    background-image: url('../images/itemListBG.png');
+    overflow-y: scroll;
+}
+.productListObject::-webkit-scrollbar-track {
+  border: 1px solid #000;
+  padding: 2px 0;
+  background-color: #404040;
+}
+.productInBasketObject{
+    background-color: coral;
+    width: 199px;
+    height: 400px;
+    margin: 1%;
+}
+.productListObject > div{
+    width: auto;
+    height: auto;
+    margin: 2px;
+}
+.productListObject img{
+    width: 70px;
+    height: 70px;
+}
+.fade{
+    animation: fade-animation 400ms;
+}
+@keyframes fade-animation {
+    from{opacity: 1}
+    to{opacity: 0}
+}
