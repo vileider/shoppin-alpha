@@ -31,8 +31,6 @@
     margin: 1%;
 }
 .productListObject > div{
-    width: auto;
-    height: auto;
     margin: 2px;
 }
 .productListObject img{
@@ -45,4 +43,20 @@
 @keyframes fade-animation {
     from{opacity: 1}
     to{opacity: 0}
+}
+.preparingComponentAnimation{
+    height: 70px;
+    width: 70px;
+    animation-name: rotate;
+    animation-duration: 3s;
+    animation-iteration-count: infinite;
+    
+}
+
+@keyframes rotate {
+    0% { transform: rotate(0deg);}
+    25% { transform: rotate(90deg);}
+    50% { transform: rotate(180deg);}
+    75% { transform: rotate(270deg);}
+    100%{ transform: rotate(360deg);}
 }

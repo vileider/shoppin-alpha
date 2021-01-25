@@ -1,30 +1,47 @@
 import React from 'react';
+import './PickingPanel.css'
+import gear from '../images/gear.png'
+import { useState, useEffect } from 'react';
 
 const PickingPanel = function () {
-    let test;
-    const pullDatabase = () => {
-        let vegAndFruitDatabase;
-        fetch('http://localhost:8000', {
-            method: 'GET',
-            mode: 'cors',
+    const [vegAndFruitTransmitedData, setVegAndFruitTransmitedData] = useState()
+
+    const pullVegAndFruitDatabase = async () => {
+        const fetchTask = new Request('http://localhost:8000', {
+            method: 'get',
             headers: {
-                'Content-Type': 'application/json'
-            },
-            body: (vegAndFruitDatabase)
-        })
+                'Content-Type': 'application/json',
+            }
+        });
+        await fetch(fetchTask)
             .then(response => response.json())
-            .then(vegAndFruitDatabase => { test = vegAndFruitDatabase })
-        console.log(test)
+            .then(data => setVegAndFruitTransmitedData(data))
+            .catch((error) => {
+                console.error('Error:', error);
+            });
     }
 
-    const panelSets = (
-        <div>
-            <button onClick={pullDatabase}>click</button>
+    useEffect(() => {
+        console.log(vegAndFruitTransmitedData)
+    }, [vegAndFruitTransmitedData])
 
-        </div>
+    const MainTopicPanelSet = (
+        <div>
+            <button onClick={() => {
+                console.log(vegAndFruitTransmitedData)
+            }}>console</button>
+            <button onClick={() => { pullVegAndFruitDatabase() }}>click</button>
+            <div className='preparingComponentAnimation'>
+                <img src={gear} />
+
+            </div>
+            <div className='preparingComponentAnimation'>
+                {vegAndFruitTransmitedData ? <img src={gear} /> : <div>djdjdjdjd</div>}
+            </div>
+        </div >
     )
 
-    return panelSets;
+    return MainTopicPanelSet;
 
 }
 export default PickingPanel;

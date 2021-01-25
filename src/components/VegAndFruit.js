@@ -1,7 +1,8 @@
-import React from 'react';
-import { useState } from 'react';
+import React, { useCallback } from 'react';
+import { useState, useEffect } from 'react';
 import './VegAndFruit.css';
 import vegAndFruitDatabase from './vegAndFruitDatabase.json'
+import gear from '../images/gear.png'
 // import bananaImage from '../images/banana.png';
 
 // const temporaryList = [{
@@ -10,8 +11,25 @@ import vegAndFruitDatabase from './vegAndFruitDatabase.json'
 // }];
 
 const VegAndFruit = function () {
-
-   const [productList, setProductList] = useState(vegAndFruitDatabase);
+   const pullVegAndFruitDatabase = async () => {
+      const fetchTask = new Request('http://localhost:8000', {
+         method: 'get',
+         headers: {
+            'Content-Type': 'application/json',
+         }
+      });
+      await fetch(fetchTask)
+         .then(response => response.json())
+         .then(data => setVegAndFruitTransmitedData(data))
+         .catch((error) => {
+            console.error('Error:', error);
+         });
+   }
+   useEffect(() => {
+      pullVegAndFruitDatabase()
+   }, [])
+   const [productList, setProductList] = useState();
+   const [vegAndFruitTransmitedData, setVegAndFruitTransmitedData] = useState()
 
    const imgUrlGenerator = (props) => {
       return require('../images/' + props + '.png').default;
@@ -35,7 +53,7 @@ const VegAndFruit = function () {
       visibilityOfEachListObjectUpdate = (event, productObject) => {
          event.target.className = 'fade';
          setTimeout(() => {
-            setProductList((productList.map(x => {
+            setProductList((vegAndFruitTransmitedData.map(x => {
                if (x.product === productObject) {
                   x.visibilityOnProductList = false;
                   return x;
@@ -46,7 +64,7 @@ const VegAndFruit = function () {
          }, 200)
       }
       generatedObjectForDisplay =
-         productList.filter(x => {
+         vegAndFruitTransmitedData.filter(x => {
             return x.visibilityOnProductList === true;
          }).map(x => (<div key={x.product}
             className={'product-section-' + x.product}
@@ -55,7 +73,7 @@ const VegAndFruit = function () {
             }}
             title={x.product}>
             <img src={errorHandlerForUrlGenerator(x.product)
-            } width='80px' height='80px' alt={x.product} />
+            } width='70px' height='70px' alt={x.product} />
          </div>
          ))
 
@@ -63,7 +81,7 @@ const VegAndFruit = function () {
    }
 
    const basketListDisplay = () => {
-      return (productList.filter(x => {
+      return (vegAndFruitTransmitedData.filter(x => {
          return x.visibilityOnProductList === false;
       }).map(x => (
          <div className={'product-section-' + x.product} key={x.product}>
@@ -72,13 +90,21 @@ const VegAndFruit = function () {
       )))
    }
    const productListObject = (
-      <div className='productListObject'>
-         {productListDisplay()}
-      </div>
+      vegAndFruitTransmitedData ? (<div className='productListObject'>
+         {
+            productListDisplay()
+         }
+      </div>)
+         : (<div className='productListObject'>
+            <div className='preparingComponentAnimation'>
+               <img src={gear} />
+            </div>
+         </div>)
    )
+
    const productInbasketObect = (
       <div className='productInBasketObject'>
-         {basketListDisplay()}
+         {vegAndFruitTransmitedData && basketListDisplay()}
       </div>
    )
    return (

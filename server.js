@@ -5,15 +5,19 @@ const cors = require('cors');
 app.use(cors())
 const fs = require('fs');
 
-let testJson;
-fs.readFile('./src/components/vegAndFruitDatabase.json', 'utf8', (err, data) => {
-    if (err) throw err;
-    testJson = JSON.parse(data);
-    console.log(testJson);
-});
-app.get('/', (request, response) => {
-    response.send(testJson)
-    console.log(request.body);
+
+app.get('/', async (request, response) => {
+    await fs.readFile('./src/components/vegAndFruitDatabase.json',
+        'utf8',
+        (err, data) => {
+            setTimeout(() => {
+                if (err) throw err;
+                let fileJson = JSON.parse(data);
+                console.log('send from entry-point /')
+                response.json(fileJson)
+            }, 60000);
+
+        })
 })
 
 
