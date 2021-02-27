@@ -1,0 +1,14 @@
+[
+    {
+        "product": "fruitSalad",
+        "visibilityOnProductList": true,
+        "ingredients": [
+            "grapefruit",
+            "kiwi",
+            "banana",
+            "apple",
+            "pineapple"
+        ],
+        "ingredientsDeveloped": ""
+    }
+]

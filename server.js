@@ -4,21 +4,20 @@ const app = express();
 const cors = require('cors');
 app.use(cors())
 const fs = require('fs');
+const { send } = require('process');
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
 
-app.get('/', async (request, response) => {
-    await fs.readFile('./src/components/vegAndFruitDatabase.json',
-        'utf8',
-        (err, data) => {
-            setTimeout(() => {
-                if (err) throw err;
-                let fileJson = JSON.parse(data);
-                console.log('send from entry-point /')
-                response.json(fileJson)
-            }, 60000);
 
-        })
-})
+app.use('/vegAndFruit', require('./server/routerVegAndFruit.js'))
+app.use('/dinners', require('./server/routerDinners.js'))
+app.use('/chemicals', require('./server/routerChemicals.js'))
+app.use('/reset', require('./server/routerReset.js'))
+app.use('/machingDinnerData', require('./server/routerMachingDinnerData.js'))
+
 
 
 app.listen(8000, () => { console.log('server on port 8000') })
+
+
