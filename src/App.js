@@ -1,7 +1,5 @@
-import './App.css';
+import './styles/styles.css';
 import BottomLinks from './components/bottom-links';
-//import Dinner from './components/dinner';
-
 import PickingPanel from './components/PickingPanel';
 
 function App() {

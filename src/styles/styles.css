@@ -1,0 +1,266 @@
+.masterProductContainer .settingsMenu .buttonBar .itemButton, .masterProductContainer .settingsMenu .buttonBar .dinnerButton {
+  padding-left: 10px;
+  padding-right: 10px;
+  height: 3vh;
+}
+
+.masterProductContainer .settingsMenu .buttonBar .itemButton {
+  background-color: green;
+}
+
+.masterProductContainer .settingsMenu .buttonBar .dinnerButton {
+  background-color: #346b34;
+}
+
+.masterProductContainer {
+  margin: 1%;
+}
+
+.masterProductContainer .settingsMenu radio {
+  color: blue;
+  border: 1px solid #ccc;
+  margin: 8px 0;
+  padding: 12px 20px;
+}
+
+.masterProductContainer .settingsMenu .buttonBar {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  min-height: 3vh;
+}
+
+.masterProductContainer .settingsMenu .itemMenu {
+  background-color: goldenrod;
+}
+
+.masterProductContainer .productCategoryChosingPanel {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+}
+
+.masterProductContainer .productCategoryChosingPanel .mainTopicButton {
+  background-color: greenyellow;
+  width: 20vw;
+}
+
+.masterProductContainer .productCategoryChosingPanel .mainTopicChosenButton {
+  background-color: white;
+  width: 20vw;
+}
+
+.masterProductContainer .productCategoryChosingPanel img {
+  width: 12vh;
+  height: auto;
+}
+
+.masterProductContainer .productsOnListObject {
+  height: 40vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -ms-flex-line-pack: start;
+      align-content: flex-start;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  overflow-y: scroll;
+}
+
+.masterProductContainer .productsOnListObject .preparingComponentAnimation {
+  height: 12vh;
+  width: 12vh;
+  -webkit-animation-name: rotate;
+          animation-name: rotate;
+  -webkit-animation-duration: 3s;
+          animation-duration: 3s;
+  -webkit-animation-iteration-count: infinite;
+          animation-iteration-count: infinite;
+}
+
+.masterProductContainer .productsOnListObject .preparingComponentAnimation img {
+  height: 12vh;
+  border: 0px solid;
+  width: 12vh;
+}
+
+@-webkit-keyframes rotate {
+  0% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  25% {
+    -webkit-transform: rotate(90deg);
+            transform: rotate(90deg);
+  }
+  50% {
+    -webkit-transform: rotate(180deg);
+            transform: rotate(180deg);
+  }
+  75% {
+    -webkit-transform: rotate(270deg);
+            transform: rotate(270deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
+
+@keyframes rotate {
+  0% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  25% {
+    -webkit-transform: rotate(90deg);
+            transform: rotate(90deg);
+  }
+  50% {
+    -webkit-transform: rotate(180deg);
+            transform: rotate(180deg);
+  }
+  75% {
+    -webkit-transform: rotate(270deg);
+            transform: rotate(270deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
+
+.masterProductContainer .productsOnListObject .fade {
+  -webkit-animation: fade-animation 400ms;
+          animation: fade-animation 400ms;
+  -webkit-animation-fill-mode: forwards;
+          animation-fill-mode: forwards;
+  position: relative;
+}
+
+.masterProductContainer .productsOnListObject .fade .productCounter {
+  font-weight: bold;
+  font-size: 25px;
+  position: absolute;
+  bottom: 2%;
+  left: 3px;
+}
+
+@-webkit-keyframes fade-animation {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0.8;
+  }
+}
+
+@keyframes fade-animation {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0.8;
+  }
+}
+
+.masterProductContainer .productsOnListObject img {
+  width: 12vh;
+  height: 12vh;
+  position: relative;
+  margin: 2px;
+  border: 2px solid black;
+}
+
+.masterProductContainer .productsOnBasketClosed {
+  display: none;
+}
+
+.masterProductContainer .productsOnBasketHide {
+  height: 0px;
+  -webkit-animation: basketHideAnimation 2s;
+          animation: basketHideAnimation 2s;
+  overflow: hidden;
+  background-image: url("../images/paragon_2.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 80% 35vh;
+}
+
+@-webkit-keyframes basketHideAnimation {
+  from {
+    height: 35vh;
+  }
+  to {
+    height: 0px;
+  }
+}
+
+@keyframes basketHideAnimation {
+  from {
+    height: 35vh;
+  }
+  to {
+    height: 0px;
+  }
+}
+
+.masterProductContainer .productsOnBasketHide .productContainer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin-left: 14%;
+  margin-right: 20%;
+  margin-top: 2%;
+}
+
+.masterProductContainer .productsOnBasketObject {
+  height: 35vh;
+  overflow-y: scroll;
+  -webkit-animation: basketRevealAnimation 2s;
+          animation: basketRevealAnimation 2s;
+  background-image: url("../images/paragon_2.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 80% 35vh;
+}
+
+@-webkit-keyframes basketRevealAnimation {
+  from {
+    height: 0px;
+  }
+  to {
+    height: 35vh;
+  }
+}
+
+@keyframes basketRevealAnimation {
+  from {
+    height: 0px;
+  }
+  to {
+    height: 35vh;
+  }
+}
+
+.masterProductContainer .productsOnBasketObject .productContainer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin-left: 14%;
+  margin-right: 20%;
+  margin-top: 2%;
+}
+
+.masterProductContainer .basketSummary {
+  border: 4px solid #792727;
+  text-align: center;
+}
+/*# sourceMappingURL=styles.css.map */

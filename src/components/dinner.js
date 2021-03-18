@@ -24,10 +24,10 @@ export const Dinner = function ({
                 });
 
         }
-        setTimeout(() => {
-            pullsetOfItemDatabase()
-        }, 500)
-    }, [liftedChildState, endpoint])
+
+        setOfItemData ?? pullsetOfItemDatabase()
+
+    }, [liftedChildState, endpoint, setOfItemData])
 
     const imgUrlGenerator = (props) => {
         return require('../images/' + props + '.png').default;

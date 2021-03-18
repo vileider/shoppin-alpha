@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import './GenerateSetOfItems.css';
+import '../styles/styles.css';
 import gear from '../images/gear.png'
 
 export const GenerateSetOfItems = function ({
@@ -8,7 +8,6 @@ export const GenerateSetOfItems = function ({
    endpoint
 }) {
    useEffect(() => {
-      console.log('endpoint', endpoint);
       const pullsetOfItemDatabase = async () => {
          const fetchTask = new Request(endpoint, {
             method: 'get',
@@ -22,12 +21,11 @@ export const GenerateSetOfItems = function ({
             .catch((error) => {
                console.error('Error:', error);
             });
-
       }
-      setTimeout(() => {
-         pullsetOfItemDatabase()
-      }, 500)
-   }, [liftedChildState, endpoint])
+      // setTimeout(() => {
+      setOfItemData ?? pullsetOfItemDatabase()
+      // }, 500)
+   }, [liftedChildState, endpoint, setOfItemData])
 
    const imgUrlGenerator = (props) => {
       return require('../images/' + props + '.png').default;
@@ -38,7 +36,7 @@ export const GenerateSetOfItems = function ({
          return imgUrlGenerator(props)
       } catch (e) {
          if (e.message) {
-            console.log('there is no image for this:', e.message)
+            // console.log('there is no image for this:', e.message)
             return require('../images/picture-not-found.png').default
          }
       }
@@ -75,37 +73,38 @@ export const GenerateSetOfItems = function ({
             )
          })
       }
-      generatedObjectForDisplay =
-         setOfItemData.filter(x => {
-            return x.visibilityOnProductList === true;
-         }).map(x => (<div key={x.product}
-            className={'product-section-' + x.product}
-            onClick={(event) => {
-               visibilityOfEachListObjectUpdate(event, x.product);
-            }}
-            title={x.product}>
-            <img src={errorHandlerForUrlGenerator(x.product)
-            } alt={x.product} position="absolute" />
-         </div>
-         ))
-      generatedObjectForFadeDisplay =
-         setOfItemData.filter(x => {
-            return x.visibilityOnProductList === false;
-         }).map(x => (<div key={x.product}
-            className={'fade'}
-            onClick={(event) => { addToProductCount(event) }}
-            title={x.product}>
-            <img src={errorHandlerForUrlGenerator(x.product)
-            } alt={x.product} />
-            <div className='productCounter' position="absolute">{x.count}</div>
-         </div>
-         ))
+      generatedObjectForDisplay = setOfItemData.map(x => {
+         if (x.visibilityOnProductList === true) {
+            return (<div key={x.product}
+               className={'product-section-' + x.product}
+               onClick={(event) => {
+                  visibilityOfEachListObjectUpdate(event, x.product);
+               }}
+               title={x.product}>
+               <img src={errorHandlerForUrlGenerator(x.product)
+               } alt={x.product} position="absolute" />
+            </div>
+            )
 
-      return (<>{generatedObjectForDisplay} {generatedObjectForFadeDisplay}</>);
+         } else if (x.visibilityOnProductList === false) {
+            return (<div key={x.product}
+               className={'fade'}
+               onClick={(event) => { addToProductCount(event) }}
+               title={x.product}>
+               <img src={errorHandlerForUrlGenerator(x.product)
+               } alt={x.product} />
+               <div className='productCounter' position="absolute">{x.count}</div>
+            </div>
+            )
+         }
+         return x
+      }
+      )
+      return generatedObjectForDisplay;
    }
 
    const productListObject = (setOfItemData ?
-      productListDisplay() : (<div className='productOnListObject' >
+      productListDisplay() : (<div className='productsOnListObject' >
          <div className='preparingComponentAnimation'>
             <img src={gear} alt='waitning animation' />
          </div>

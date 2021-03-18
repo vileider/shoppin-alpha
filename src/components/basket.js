@@ -1,13 +1,23 @@
-import React from 'react'
+import React, { useState } from 'react'
 export const Basket = function (props) {
+    const [basketClassName, setBasketClassName] = useState('productsOnBasketClosed')
+    const recipeFold = () => {
+        (basketClassName === 'productsOnBasketHide')
+            ? setBasketClassName('productsOnBasketObject')
+            : (basketClassName === 'productsOnBasketClosed')
+                ? setBasketClassName('productsOnBasketObject')
+                : setBasketClassName('productsOnBasketHide')
+
+
+    }
     const basketListDisplay = () => {
         try {
             // console.log('basket, data from parent', props.dataFromParent)
             return props.dataFromParent.filter(x => {
                 return x.visibilityOnProductList === false;
-            }).map(x => (<div className="listedProduct" key={x.product}>
-                <div className={'product-section-' + x.product}
-                    key={'product-section-' + x.product}
+            }).map(x => (<div className="productContainer" key={x.product}>
+                <div className='productName'
+                    key={'productSelection_' + x.product}
                     style={{ flex: '80%' }}>
                     {`${x.count}  ${x.product}`}
                 </div>
@@ -36,12 +46,16 @@ export const Basket = function (props) {
         }
     }
 
-    return (
-        <div className='productOnBasketObject'>
+    return (<>
+        <div className={basketClassName}>
+            {/* <img alt='123' src={require('../images/paragon_1.png').default} /> */}
             {basketListDisplay()}
-            <div className="basketSummary">
-                {basketSummary()}
-            </div>
+
+
         </div>
+        <div className="basketSummary" onClick={() => { recipeFold() }}>
+            {basketSummary()}
+        </div>
+    </>
     )
 }
