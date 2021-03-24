@@ -1,0 +1,14 @@
+[
+  {
+    "product": "penuts",
+    "visibilityOnProductList": true,
+    "price": 1,
+    "count": 0
+  },
+  {
+    "product": "strawberry jam",
+    "visibilityOnProductList": true,
+    "price": "3",
+    "count": 0
+  }
+]

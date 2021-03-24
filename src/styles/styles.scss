@@ -20,6 +20,7 @@ $buttonBarHeight: 3vh;
 }
 .masterProductContainer{
     margin: 1%;
+    width: 100%;
     .settingsMenu{
         radio{
             color:blue;
@@ -34,7 +35,15 @@ $buttonBarHeight: 3vh;
             @extend %dinnerButton;
         }
         .itemMenu{
-            background-color: goldenrod;
+            display: flex;
+            .infoPanel{
+                align-self: center;
+                text-align: center;
+                font-variant: small-caps;
+                font-weight: bold;
+                width: 70vw;
+                color: red;
+            }
         }
         
     }

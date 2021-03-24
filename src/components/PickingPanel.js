@@ -14,8 +14,8 @@ const PickingPanel = function () {
             vegAndFruit: false,
             chemicals: false,
             dinners: false,
-            dairy: false,
-            eElse: false
+            dairyWheatAndEggs: false,
+            everythingElse: false
         })
 
     const mainButtonStateChange = (altName) => {
@@ -24,14 +24,16 @@ const PickingPanel = function () {
             vegAndFruit: false,
             chemicals: false,
             dinners: false,
-            dairy: false,
-            eElse: false
+            dairyWheatAndEggs: false,
+            everythingElse: false
         }
         visibilityBase[altName] = true
         return visibilityBase
     }
     const [chemicalTransmitedData, setChemicalTransmitedData] = useState()
     const [dinnerTransmitedData, setDinnerTransmitedData] = useState()
+    const [dairyWheatAndEggsTransmitedData, setDairyWheatAndEggsTransmitedData] = useState()
+    const [everythingElseTransmitedData, setEverythingElseTransmitedData] = useState()
     // const resetServer = () => {
     //     console.log('i am reseting the server');
     //     fetch('http://localhost:8000/reset/vAF')
@@ -66,18 +68,20 @@ const PickingPanel = function () {
             </div >)
         }
     }
-    const mainTopicNoActionButton = (imageSource, altName) => {
-        return (
-            <div className='mainTopicButton'>
-                <img src={imageSource} alt={altName} />
-            </div>
-        )
-    }
+    // const mainTopicNoActionButton = (imageSource, altName) => {
+    //     return (
+    //         <div className='mainTopicButton'>
+    //             <img src={imageSource} alt={altName} />
+    //         </div>
+    //     )
+    // }
 
     const dataAvailabilityCheck = () => {
         const sourceArray = [
             vegAndFruitTransmitedData,
-            chemicalTransmitedData
+            chemicalTransmitedData,
+            dairyWheatAndEggsTransmitedData,
+            everythingElseTransmitedData
         ]
         let combinedArrays = []
         sourceArray.filter(x => Array.isArray(x))
@@ -120,7 +124,6 @@ const PickingPanel = function () {
     }
 
     const MainTopicPanelSet = (<>
-        {/* <button className='resetButton' onClick={() => { resetServer() }}> reset server</button> */}
         <div className='masterProductContainer'>
             <ModBar />
             <div className="productCategoryChosingPanel">
@@ -134,10 +137,10 @@ const PickingPanel = function () {
                 {mainTopicButton(imgUrlGenerator('dinners'), 'dinners')}
 
 
-                {mainTopicNoActionButton(imgUrlGenerator('milkAndCheese'), 'milkAndCheese')}
+                {mainTopicButton(imgUrlGenerator('milkAndCheese'), 'dairyWheatAndEggs')}
 
 
-                {mainTopicNoActionButton(imgUrlGenerator('milkAndCheese'), 'milkAndCheese')}
+                {mainTopicButton(imgUrlGenerator('everythingElse'), 'everythingElse')}
 
             </div>
             <div className="productsOnListObject">
@@ -163,6 +166,22 @@ const PickingPanel = function () {
                         <Dinner liftedChildState={setDinnerTransmitedData}
                             setOfItemData={dinnerTransmitedData}
                             endpoint={'http://localhost:8000/dinners'} />
+                    </>
+                }
+                {
+                    mainButtonContentVisibilityCheck.dairyWheatAndEggs &&
+                    <>
+                        <GenerateSetOfItems liftedChildState={setDairyWheatAndEggsTransmitedData}
+                            setOfItemData={dairyWheatAndEggsTransmitedData}
+                            endpoint={'http://localhost:8000/dairyWheatAndEggs'} />
+                    </>
+                }
+                {
+                    mainButtonContentVisibilityCheck.everythingElse &&
+                    <>
+                        <GenerateSetOfItems liftedChildState={setEverythingElseTransmitedData}
+                            setOfItemData={everythingElseTransmitedData}
+                            endpoint={'http://localhost:8000/everythingElse'} />
                     </>
                 }
             </div>

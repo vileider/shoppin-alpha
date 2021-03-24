@@ -14,6 +14,7 @@
 
 .masterProductContainer {
   margin: 1%;
+  width: 100%;
 }
 
 .masterProductContainer .settingsMenu radio {
@@ -31,7 +32,20 @@
 }
 
 .masterProductContainer .settingsMenu .itemMenu {
-  background-color: goldenrod;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.masterProductContainer .settingsMenu .itemMenu .infoPanel {
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+  text-align: center;
+  font-variant: small-caps;
+  font-weight: bold;
+  width: 70vw;
+  color: red;
 }
 
 .masterProductContainer .productCategoryChosingPanel {
