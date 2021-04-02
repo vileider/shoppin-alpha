@@ -78,7 +78,7 @@ export const AddItem = function () {
                     </div>
 
                 </div >
-                {(infoMessage != 'sending to server') &&
+                {(infoMessage !== 'sending to server') &&
                     <button onTouchStart={() => typedDataValidation()}>ADD</button>}
 
             </div>

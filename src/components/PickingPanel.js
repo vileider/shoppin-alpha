@@ -86,7 +86,7 @@ const PickingPanel = function () {
         let combinedArrays = []
         sourceArray.filter(x => Array.isArray(x))
             .forEach(y => combinedArrays = combinedArrays.concat(y))
-        console.log(combinedArrays)
+
         if (dinnerTransmitedData) {
             try {
                 if (combinedArrays.length > 0) {

@@ -46,13 +46,17 @@ export const Basket = function (props) {
         }
     }
 
-    return (<>
+    return (<><div className='basketBackground' >
+
         <div className={basketClassName}>
-            {/* <img alt='123' src={require('../images/paragon_1.png').default} /> */}
+
             {basketListDisplay()}
 
-
         </div>
+        <img className={`background${basketClassName}`}
+            src={require('../images/paragon_2.png').default} />
+
+    </div>
         <div className="basketSummary" onClick={() => { recipeFold() }}>
             {basketSummary()}
         </div>

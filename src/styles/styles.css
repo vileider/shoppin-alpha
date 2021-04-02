@@ -31,20 +31,27 @@
   min-height: 3vh;
 }
 
-.masterProductContainer .settingsMenu .itemMenu {
+.masterProductContainer .settingsMenu .itemMenu, .masterProductContainer .settingsMenu .dinnerMenu {
+  background-color: white;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  position: absolute;
+  z-index: 5;
 }
 
-.masterProductContainer .settingsMenu .itemMenu .infoPanel {
+.masterProductContainer .settingsMenu .itemMenu .addItemMenu, .masterProductContainer .settingsMenu .dinnerMenu .addItemMenu {
+  width: 54vw;
+}
+
+.masterProductContainer .settingsMenu .itemMenu .infoPanel, .masterProductContainer .settingsMenu .dinnerMenu .infoPanel {
   -ms-flex-item-align: center;
       -ms-grid-row-align: center;
       align-self: center;
   text-align: center;
   font-variant: small-caps;
   font-weight: bold;
-  width: 70vw;
+  width: 46vw;
   color: red;
 }
 
@@ -157,12 +164,14 @@
   -webkit-animation-fill-mode: forwards;
           animation-fill-mode: forwards;
   position: relative;
+  z-index: 2;
 }
 
 .masterProductContainer .productsOnListObject .fade .productCounter {
+  position: absolute;
   font-weight: bold;
   font-size: 25px;
-  position: absolute;
+  z-index: 3;
   bottom: 2%;
   left: 3px;
 }
@@ -193,24 +202,44 @@
   border: 2px solid black;
 }
 
-.masterProductContainer .productsOnBasketClosed {
-  display: none;
+.masterProductContainer .basketBackground {
+  margin-top: 2vh;
+  position: relative;
 }
 
-.masterProductContainer .productsOnBasketHide {
-  height: 0px;
+.masterProductContainer .basketBackground .productsOnBasketClosed {
+  display: none;
+  width: -webkit-fill-available;
+  z-index: 2;
+  height: 0;
+  overflow-y: scroll;
   -webkit-animation: basketHideAnimation 2s;
           animation: basketHideAnimation 2s;
-  overflow: hidden;
-  background-image: url("../images/paragon_2.png");
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: 80% 35vh;
+  position: absolute;
+}
+
+.masterProductContainer .basketBackground .backgroundproductsOnBasketClosed {
+  position: absolute;
+  z-index: -1;
+  height: 0;
+  width: 100vw;
+}
+
+.masterProductContainer .basketBackground .productsOnBasketHide {
+  width: -webkit-fill-available;
+  z-index: 2;
+  height: 0;
+  overflow-y: scroll;
+  -webkit-animation: basketHideAnimation 1400ms;
+          animation: basketHideAnimation 1400ms;
+  position: absolute;
+  margin-top: 20px;
+  margin-bottom: 30px;
 }
 
 @-webkit-keyframes basketHideAnimation {
   from {
-    height: 35vh;
+    height: 190px;
   }
   to {
     height: 0px;
@@ -219,62 +248,118 @@
 
 @keyframes basketHideAnimation {
   from {
-    height: 35vh;
+    height: 190px;
   }
   to {
     height: 0px;
   }
 }
 
-.masterProductContainer .productsOnBasketHide .productContainer {
+.masterProductContainer .basketBackground .productsOnBasketHide .productContainer {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   margin-left: 14%;
   margin-right: 20%;
-  margin-top: 2%;
+  margin-top: 0;
 }
 
-.masterProductContainer .productsOnBasketObject {
-  height: 35vh;
+.masterProductContainer .basketBackground .backgroundproductsOnBasketHide {
+  position: relative;
+  z-index: -1;
+  height: 0;
+  width: 100vw;
+  -webkit-animation: imageHideAnimation 2s;
+          animation: imageHideAnimation 2s;
+}
+
+@-webkit-keyframes imageHideAnimation {
+  from {
+    height: 225px;
+  }
+  to {
+    height: 0px;
+  }
+}
+
+@keyframes imageHideAnimation {
+  from {
+    height: 225px;
+  }
+  to {
+    height: 0px;
+  }
+}
+
+.masterProductContainer .basketBackground .productsOnBasketObject {
+  width: -webkit-fill-available;
+  z-index: 2;
+  height: 190px;
   overflow-y: scroll;
-  -webkit-animation: basketRevealAnimation 2s;
-          animation: basketRevealAnimation 2s;
-  background-image: url("../images/paragon_2.png");
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: 80% 35vh;
+  -webkit-animation: basketRevealAnimation 2200ms;
+          animation: basketRevealAnimation 2200ms;
+  position: absolute;
+  margin-top: 20px;
 }
 
 @-webkit-keyframes basketRevealAnimation {
   from {
-    height: 0px;
+    height: 0vh;
   }
   to {
-    height: 35vh;
+    height: 190px;
   }
 }
 
 @keyframes basketRevealAnimation {
   from {
-    height: 0px;
+    height: 0vh;
   }
   to {
-    height: 35vh;
+    height: 190px;
   }
 }
 
-.masterProductContainer .productsOnBasketObject .productContainer {
+.masterProductContainer .basketBackground .productsOnBasketObject .productContainer {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   margin-left: 14%;
   margin-right: 20%;
-  margin-top: 2%;
+  margin-top: 0;
 }
 
-.masterProductContainer .basketSummary {
+.masterProductContainer .basketBackground .backgroundproductsOnBasketObject {
+  position: relative;
+  z-index: -1;
+  height: 225px;
+  width: 100vw;
+  -webkit-animation: imageRevealAnimation 2s;
+          animation: imageRevealAnimation 2s;
+}
+
+@-webkit-keyframes imageRevealAnimation {
+  from {
+    height: 0px;
+  }
+  to {
+    height: 220px;
+  }
+}
+
+@keyframes imageRevealAnimation {
+  from {
+    height: 0px;
+  }
+  to {
+    height: 220px;
+  }
+}
+
+.basketSummary {
   border: 4px solid #792727;
   text-align: center;
+  width: 100%;
+  z-index: 2;
 }
 /*# sourceMappingURL=styles.css.map */
