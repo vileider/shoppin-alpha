@@ -59,13 +59,13 @@ export const AddItem = function () {
                             itemMenuState.productPrice)
                     }}><label>
                             <input type='radio' value='/vegAndFruit' onChange={e => { }}
-                                checked={itemMenuState.productCategory === '/vegAndFruit'} />Veg and Fruits</label>
+                                checked={itemMenuState.productCategory === '/vegAndFruit'} />Veg and Fruits</label><br />
                         <label><input type='radio' value='/chemicals' onChange={e => { }}
-                            checked={itemMenuState.productCategory === '/chemicals'} />Chemicals</label>
+                            checked={itemMenuState.productCategory === '/chemicals'} />Chemicals</label><br />
                         <label><input type='radio' value='/dairyWheatAndEggs' onChange={e => { }}
-                            checked={itemMenuState.productCategory === '/dairyWheatAndEggs'} />Dairy</label>
+                            checked={itemMenuState.productCategory === '/dairyWheatAndEggs'} />Dairy</label><br />
                         <label><input type='radio' value='/everythingElse' onChange={e => { }}
-                            checked={itemMenuState.productCategory === '/everythingElse'} />Everything else</label>
+                            checked={itemMenuState.productCategory === '/everythingElse'} />Everything else</label><br />
                     </div>
 
                     <div className='priceOfAddedProduct'>

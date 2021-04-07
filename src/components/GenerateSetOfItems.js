@@ -36,7 +36,7 @@ export const GenerateSetOfItems = function ({
          return imgUrlGenerator(props)
       } catch (e) {
          if (e.message) {
-            // console.log('there is no image for this:', e.message)
+            console.log('there is no image for this:', e.message)
             return require('../images/picture-not-found.png').default
          }
       }

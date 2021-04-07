@@ -15,6 +15,7 @@
 .masterProductContainer {
   margin: 1%;
   width: 100%;
+  max-height: 100vh;
 }
 
 .masterProductContainer .settingsMenu radio {
@@ -32,12 +33,13 @@
 }
 
 .masterProductContainer .settingsMenu .itemMenu, .masterProductContainer .settingsMenu .dinnerMenu {
-  background-color: white;
+  background-color: #bceedf;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   position: absolute;
   z-index: 5;
+  width: 100vw;
 }
 
 .masterProductContainer .settingsMenu .itemMenu .addItemMenu, .masterProductContainer .settingsMenu .dinnerMenu .addItemMenu {
@@ -76,7 +78,7 @@
 }
 
 .masterProductContainer .productCategoryChosingPanel img {
-  width: 12vh;
+  width: 100%;
   height: auto;
 }
 
@@ -199,7 +201,6 @@
   height: 12vh;
   position: relative;
   margin: 2px;
-  border: 2px solid black;
 }
 
 .masterProductContainer .basketBackground {
@@ -208,7 +209,6 @@
 }
 
 .masterProductContainer .basketBackground .productsOnBasketClosed {
-  display: none;
   width: -webkit-fill-available;
   z-index: 2;
   height: 0;
@@ -216,10 +216,11 @@
   -webkit-animation: basketHideAnimation 2s;
           animation: basketHideAnimation 2s;
   position: absolute;
+  margin-top: 20px;
 }
 
 .masterProductContainer .basketBackground .backgroundproductsOnBasketClosed {
-  position: absolute;
+  position: relatives;
   z-index: -1;
   height: 0;
   width: 100vw;
@@ -234,7 +235,6 @@
           animation: basketHideAnimation 1400ms;
   position: absolute;
   margin-top: 20px;
-  margin-bottom: 30px;
 }
 
 @-webkit-keyframes basketHideAnimation {
