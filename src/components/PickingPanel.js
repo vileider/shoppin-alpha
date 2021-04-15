@@ -52,7 +52,6 @@ const PickingPanel = function () {
             resolve(e.target.alt)
         })
         await alternativeNameInPromise.then(value => {
-
             setMainButtonContentVisibilityCheck(mainButtonStateChange(value))
         })
     }

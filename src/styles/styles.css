@@ -40,6 +40,7 @@
   position: absolute;
   z-index: 5;
   width: 100vw;
+  min-height: 40vh;
 }
 
 .masterProductContainer .settingsMenu .itemMenu .addItemMenu, .masterProductContainer .settingsMenu .dinnerMenu .addItemMenu {
@@ -55,6 +56,39 @@
   font-weight: bold;
   width: 46vw;
   color: red;
+}
+
+.masterProductContainer .settingsMenu .itemMenu .dinnerPickingContainer, .masterProductContainer .settingsMenu .dinnerMenu .dinnerPickingContainer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  margin: 0 auto;
+}
+
+.masterProductContainer .settingsMenu .itemMenu .dinnerPickingContainer .dinnerProductCategoryChosingPanel, .masterProductContainer .settingsMenu .dinnerMenu .dinnerPickingContainer .dinnerProductCategoryChosingPanel {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin: 0 auto;
+}
+
+.masterProductContainer .settingsMenu .itemMenu .dinnerPickingContainer .dinnerProductCategoryChosingPanel .mainTopicButton, .masterProductContainer .settingsMenu .dinnerMenu .dinnerPickingContainer .dinnerProductCategoryChosingPanel .mainTopicButton {
+  background-color: greenyellow;
+  width: 25vw;
+}
+
+.masterProductContainer .settingsMenu .itemMenu .dinnerPickingContainer .dinnerProductCategoryChosingPanel .mainTopicChosenButton, .masterProductContainer .settingsMenu .dinnerMenu .dinnerPickingContainer .dinnerProductCategoryChosingPanel .mainTopicChosenButton {
+  background-color: white;
+  width: 25vw;
+}
+
+.masterProductContainer .settingsMenu .itemMenu .dinnerPickingContainer .dinnerProductCategoryChosingPanel img, .masterProductContainer .settingsMenu .dinnerMenu .dinnerPickingContainer .dinnerProductCategoryChosingPanel img {
+  width: 100%;
+  height: auto;
 }
 
 .masterProductContainer .productCategoryChosingPanel {

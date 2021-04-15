@@ -53,7 +53,7 @@ export const Basket = function (props) {
             {basketListDisplay()}
 
         </div>
-        <img className={`background${basketClassName}`}
+        <img alt='recipe' className={`background${basketClassName}`}
             src={require('../images/paragon_2.png').default} />
 
     </div>

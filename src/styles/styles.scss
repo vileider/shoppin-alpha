@@ -44,9 +44,11 @@ $backgroundRecipePadding: 20px;
             position: absolute;
             z-index: 5;
             width: 100vw;
+            min-height: 40vh;
             .addItemMenu{
                 width: 54vw;
             }
+            
             .infoPanel{
                 align-self: center;
                 text-align: center;
@@ -55,6 +57,27 @@ $backgroundRecipePadding: 20px;
                 width: 46vw;
                 color: red;
                 // position: absolute;
+            }
+            .dinnerPickingContainer{
+                display: flex;
+                flex-direction: row;
+                margin: 0 auto;
+                .dinnerProductCategoryChosingPanel{
+                    display: flex;
+                    margin: 0 auto;
+                .mainTopicButton{
+                    background-color: greenyellow;
+                    width: 25vw;
+                }
+                .mainTopicChosenButton{
+                    background-color: white;
+                    width: 25vw;
+                }
+                    img{
+                            width: 100%;
+                            height: auto;
+                    }  
+                }  
             }
         }
         

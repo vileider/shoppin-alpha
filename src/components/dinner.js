@@ -121,16 +121,3 @@ export const Dinner = function ({
 
 }
 
-
-
-
-
-
-// const displayLog = (position) => {
-//     console.log(`${position.x}`)
-// }
-// return (
-//     <button id='dinner1' onTouchMove={displayLog}>
-//         1
-//     </button>
-// )

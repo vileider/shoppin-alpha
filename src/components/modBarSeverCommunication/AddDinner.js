@@ -1,25 +1,29 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
+import { PickingDinnerIngredientsPanel } from './PickingDinnerIngredientsPanel'
+
+const createFieldsOfProductsArray = () => {
+    let x = []
+    for (let i = 0; i < 10; i++) {
+        x.push({ id: i + 1, [`item${i + 1}`]: '' },)
+    }
+    return x
+}
 
 export const AddDinner = function () {
-    const [IngerdientTypeList, setIngerdientTypeList] = useState()
-    const [counter, setCounter] = useState(0)
-    const [fieldsOfProducts, setFieldsOfProducts] = useState([])
-    const changeObjectsForDinnerIngredients = (idForChange, value) => {
-        let x = []
-        for (let i = 0; i < 10; i++) {
-            idForChange - 1 === i
-                ? x.push({ id: `${i + 1}`, [`item${i + 1}`]: value, visible: false },)
-                : x.push({ id: `${i + 1}`, [`item${i + 1}`]: '', visible: false },)
-        }
-    }
-    useEffect(() => {
-        let x = []
-        for (let i = 0; i < 10; i++) {
-            x.push({ id: i + 1, [`item${i + 1}`]: '' },)
-        }
-        setFieldsOfProducts(x)
-    }, [])
 
+    const [counter, setCounter] = useState(0)
+    const [fieldsOfProducts, setFieldsOfProducts] = useState(createFieldsOfProductsArray())
+    const changeObjectsForDinnerIngredients = (idForChange, value) => {
+        setFieldsOfProducts(fieldsOfProducts.map(x => {
+            return (
+                x.id === idForChange
+                    ? { id: x.id, [`item${x.id}`]: value }
+
+                    : x
+            )
+        }
+        ))
+    }
     const plusButtonAction = (e) => {
         setCounter(counter + 1)
     }
@@ -29,21 +33,34 @@ export const AddDinner = function () {
     }
 
     const generateInputFields = () => {
+
         return (fieldsOfProducts.filter(y => y.id < counter + 1).map(x => {
             return (
                 x.id !== 10
-                    ? <><input key={x.id} type='text' maxLength={8} />
-                        <button disabled={x.id !== counter}
-                            onClick={(e) => { minusButtonAction(e) }}> -</button >
-                        <br />
-                        <button disabled={x.id !== counter}
-                            onClick={(e) => { plusButtonAction(e) }}> +</button ></>
+                    ?
+                    <div key={`div${x.id}`} >
+                        <input key={`input-${x.id}`} type='text' maxLength={8}
+                            onChange={(e) => {
+                                changeObjectsForDinnerIngredients(x.id, e.target.value)
+                                console.log(x[`item${x.id}`])
+                            }} />
 
-                    : <><input key={x.id} type='text' maxLength={8} />
-                        <button disabled={x.id !== counter}
-                            onClick={(e) => { minusButtonAction(e) }}> -</button ><br /></>
+                        <button key={`button${x.id}`} disabled={x.id !== counter}
+                            onClick={(e) => { minusButtonAction(e) }}> -</button >
+
+                        <button key={`button+${x.id}`}
+                            disabled={x.id !== counter || x[`item${x.id}`] === ''}
+                            onClick={(e) => { plusButtonAction(e) }}> +</button >
+                    </div>
+
+                    :
+                    <div key={`div${x.id}`} ><input key={`input${x.id}`} type='text' maxLength={8} />
+                        <button key={`button${x.id}`} disabled={x.id !== counter}
+                            onClick={(e) => { minusButtonAction(e) }}> -</button >
+                    </div>
             )
         }
+
         ))
     }
 
@@ -57,6 +74,7 @@ export const AddDinner = function () {
             <button disabled={counter >= 1}
                 onClick={(e) => { plusButtonAction(e) }}> +</button >
             {generateInputFields()}
+            {counter > 0 && <PickingDinnerIngredientsPanel />}
         </div>
     )
     return addDinnerMenu
