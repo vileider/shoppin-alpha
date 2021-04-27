@@ -18,6 +18,9 @@ app.use('/machingDinnerData', require('./server/routerMachingDinnerData.js'))
 app.use('/dairyWheatAndEggs', require('./server/routerDairyWheatAndEggs.js'))
 app.use('/everythingElse', require('./server/routerEverythingElse.js'))
 app.use('/addItem', require('./server/routerAddItem.js'))
+app.use('/addDinner', require('./server/routerAddDinner.js'))
+
+
 
 app.listen(8000, () => { console.log('server on port 8000') })
 

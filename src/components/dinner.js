@@ -93,6 +93,7 @@ export const Dinner = function ({
                 title={x.product}>
                 <img src={errorHandlerForUrlGenerator(x.product)
                 } alt={x.product} position="absolute" />
+                <div className='productName' position="absolute">{x.product}</div>
             </div>
             ))
         generatedObjectForFadeDisplay =
@@ -103,6 +104,7 @@ export const Dinner = function ({
                 title={x.product}>
                 <img src={errorHandlerForUrlGenerator(x.product)
                 } alt={x.product} />
+                <div className='productName' position="absolute">{x.product}</div>
             </div>
             ))
 

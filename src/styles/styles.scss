@@ -58,26 +58,44 @@ $backgroundRecipePadding: 20px;
                 color: red;
                 // position: absolute;
             }
-            .dinnerPickingContainer{
-                display: flex;
-                flex-direction: row;
-                margin: 0 auto;
-                .dinnerProductCategoryChosingPanel{
+            .addDinnerMenu{
+                .panelsContainer{
                     display: flex;
-                    margin: 0 auto;
-                .mainTopicButton{
-                    background-color: greenyellow;
-                    width: 25vw;
+                    .inputPanel{
+                        background-color: burlywood;
+                    }
+                    
                 }
-                .mainTopicChosenButton{
-                    background-color: white;
-                    width: 25vw;
-                }
-                    img{
+                .dinnerPickingContainer{
+                 display: flex;
+                 flex-direction: row;
+                 margin: 0 auto;
+                    .dinnerProductCategoryChosingPanel{
+                        display: flex;
+                        margin: 0 auto;
+                        height: 100%;
+                        .mainTopicButton{
+                            background-color: greenyellow;
+                            width: 25vw;
+                        }
+                        .mainTopicChosenButton{
+                            background-color: white;
+                            width: 25vw;
+                        }
+                        img{
                             width: 100%;
                             height: auto;
+                        }  
                     }  
-                }  
+                    .productsOnListObject{
+                        height: 40vh;
+                        display: flex;
+                        flex-wrap: wrap;
+                        align-content: flex-start;
+                        justify-content: center;
+                        overflow-y: scroll;
+                    }
+                }
             }
         }
         
@@ -107,6 +125,19 @@ $backgroundRecipePadding: 20px;
         align-content: flex-start;
         justify-content: center;
         overflow-y: scroll;
+        .normal{
+            position: relative;
+            z-index: 2;
+            .productName{
+                position: absolute;
+                font-weight: bold;
+                font-size: 15px; 
+                z-index: 5;
+                top: 3%;
+                left: 3px; 
+            }
+        }
+        
         .preparingComponentAnimation{
             height:$productSize;
             width: $productSize;
@@ -140,6 +171,14 @@ $backgroundRecipePadding: 20px;
                 bottom: 2%;
                 left: 3px;
                 // transform: translate(1px,1px);
+            }
+            .productName{
+                position: absolute;
+                font-weight: bold;
+                font-size: 15px; 
+                z-index: 3;
+                top: 3%;
+                left: 3px; 
             }
         }
         @keyframes fade-animation {

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { GenerateSetOfDinnerIngredients } from './GenerateSetOfDinnerIngredients';
 
-export const PickingDinnerIngredientsPanel = function () {
+export const PickingDinnerIngredientsPanel = function ({ liftedChildState, pickedParentIngredients }) {
     const [mainButtonContentVisibilityCheck,
         setMainButtonContentVisibilityCheck] = useState({
             vegAndFruit: false,
@@ -10,7 +10,6 @@ export const PickingDinnerIngredientsPanel = function () {
             dairyWheatAndEggs: false,
             everythingElse: false
         })
-    const [pickedIngredients, setPickedIngredients] = useState()
 
     const mainButtonStateChange = (altName) => {
         let visibilityBase =
@@ -51,26 +50,54 @@ export const PickingDinnerIngredientsPanel = function () {
         return require('../../images/' + props + '.png').default;
     }
 
-    const mainTopicPanelSet = (
+    const mainTopicPanelSet = (<>
         <div className='dinnerPickingContainer'>
             <div className="dinnerProductCategoryChosingPanel">
                 {mainTopicButton(imgUrlGenerator('veg-fruit'), 'vegAndFruit')}
                 {mainTopicButton(imgUrlGenerator('chemicals'), 'chemicals')}
                 {mainTopicButton(imgUrlGenerator('milkAndCheese'), 'dairyWheatAndEggs')}
                 {mainTopicButton(imgUrlGenerator('everythingElse'), 'everythingElse')}
-
             </div>
+        </div>
+
+        <div className="productsOnListObject">
             {
                 mainButtonContentVisibilityCheck.vegAndFruit &&
                 <>
                     <GenerateSetOfDinnerIngredients
-                        liftedChildState={setPickedIngredients}
-                        pickedParentIngredients={pickedIngredients}
+                        liftedChildState={liftedChildState}
+                        pickedParentIngredients={pickedParentIngredients}
                         endpoint={'http://localhost:8000/vegAndFruit'} />
                 </>
             }
-        </div>
-    )
+            {
+                mainButtonContentVisibilityCheck.chemicals &&
+                <>
+                    <GenerateSetOfDinnerIngredients
+                        liftedChildState={liftedChildState}
+                        pickedParentIngredients={pickedParentIngredients}
+                        endpoint={'http://localhost:8000/chemicals'} />
+                </>
+            }
+            {
+                mainButtonContentVisibilityCheck.dairyWheatAndEggs &&
+                <>
+                    <GenerateSetOfDinnerIngredients
+                        liftedChildState={liftedChildState}
+                        pickedParentIngredients={pickedParentIngredients}
+                        endpoint={'http://localhost:8000/dairyWheatAndEggs'} />
+                </>
+            }
+            {
+                mainButtonContentVisibilityCheck.everythingElse &&
+                <>
+                    <GenerateSetOfDinnerIngredients
+                        liftedChildState={liftedChildState}
+                        pickedParentIngredients={pickedParentIngredients}
+                        endpoint={'http://localhost:8000/everythingElse'} />
+                </>
+            }
+        </div></>)
     return <> { mainTopicPanelSet}</>
 }
 

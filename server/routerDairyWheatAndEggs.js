@@ -3,7 +3,7 @@ const router = express.Router()
 const fs = require('fs');
 
 router.get('/', async (request, response) => {
-    await fs.readFile('./src/components/dairyWheatAndEggsDatabase.json',
+    await fs.readFile('./database/dairyWheatAndEggsDatabase.json',
         'utf8',
         (err, data) => {
             setTimeout(() => {

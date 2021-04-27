@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { PickingDinnerIngredientsPanel } from './PickingDinnerIngredientsPanel'
+import { SendDinner } from './SendDinner';
 
 const createFieldsOfProductsArray = () => {
     let x = []
@@ -10,25 +11,31 @@ const createFieldsOfProductsArray = () => {
 }
 
 export const AddDinner = function () {
-
+    const [dinnerName, setDinnerName] = useState()
+    const [pickedIngredients, setPickedIngredients] = useState([])
     const [counter, setCounter] = useState(0)
     const [fieldsOfProducts, setFieldsOfProducts] = useState(createFieldsOfProductsArray())
+
     const changeObjectsForDinnerIngredients = (idForChange, value) => {
         setFieldsOfProducts(fieldsOfProducts.map(x => {
             return (
                 x.id === idForChange
                     ? { id: x.id, [`item${x.id}`]: value }
-
                     : x
             )
         }
         ))
     }
-    const plusButtonAction = (e) => {
+
+    useEffect(() => {
+        changeObjectsForDinnerIngredients(counter, pickedIngredients[counter - 1])
+    }, [pickedIngredients])// eslint-disable-line react-hooks/exhaustive-deps
+
+    const plusButtonAction = () => {
         setCounter(counter + 1)
     }
 
-    const minusButtonAction = (e) => {
+    const minusButtonAction = () => {
         setCounter(counter - 1)
     }
 
@@ -40,10 +47,9 @@ export const AddDinner = function () {
                     ?
                     <div key={`div${x.id}`} >
                         <input key={`input-${x.id}`} type='text' maxLength={8}
-                            onChange={(e) => {
-                                changeObjectsForDinnerIngredients(x.id, e.target.value)
-                                console.log(x[`item${x.id}`])
-                            }} />
+                            value={pickedIngredients[x.id - 1] || ''}
+                            readOnly
+                        />
 
                         <button key={`button${x.id}`} disabled={x.id !== counter}
                             onClick={(e) => { minusButtonAction(e) }}> -</button >
@@ -54,7 +60,11 @@ export const AddDinner = function () {
                     </div>
 
                     :
-                    <div key={`div${x.id}`} ><input key={`input${x.id}`} type='text' maxLength={8} />
+                    <div key={`div${x.id}`} >
+                        <input key={`input${x.id}`} type='text' maxLength={8}
+                            value={pickedIngredients[x.id - 1] || ''}
+                            readOnly
+                        />
                         <button key={`button${x.id}`} disabled={x.id !== counter}
                             onClick={(e) => { minusButtonAction(e) }}> -</button >
                     </div>
@@ -64,18 +74,34 @@ export const AddDinner = function () {
         ))
     }
 
-    const addDinnerMenu = (
+    const addDinnerMenu = (<>
         <div className='addDinnerMenu'>
-            <div className='nameOfAddedProduct'>
-                <div className='settingsTitle'>Dinner Name:</div>
-                <input type='text' maxLength={16} onChange={(e) => { }} />
-            </div>
+            <div className='panelsContainer'>
+                <div className='inputPanel'>
+                    <div className='nameOfAddedProduct'>
+                        <div className='settingsTitle'>Dinner Name:</div>
+                        <input type='text' maxLength={16} onChange={(e) => {
+                            setDinnerName(e.target.value)
+                        }} />
+                    </div>
 
-            <button disabled={counter >= 1}
-                onClick={(e) => { plusButtonAction(e) }}> +</button >
-            {generateInputFields()}
-            {counter > 0 && <PickingDinnerIngredientsPanel />}
+                    <button disabled={counter >= 1}
+                        onClick={(e) => { plusButtonAction(e) }}> +</button >
+                    {generateInputFields()}
+                </div>
+                <div className='infoPanel'>
+                    <SendDinner dinnerParentName={dinnerName}
+                        pickedParentIngredients={pickedIngredients} />
+                </div>
+            </div>
+            {counter > 0 &&
+                (!fieldsOfProducts[counter - 1][`item${counter}`]
+                    && <PickingDinnerIngredientsPanel
+                        liftedChildState={setPickedIngredients}
+                        pickedParentIngredients={pickedIngredients} />)
+            }
         </div>
+    </>
     )
     return addDinnerMenu
 }

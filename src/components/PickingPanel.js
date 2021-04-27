@@ -92,6 +92,7 @@ const PickingPanel = function () {
                     if (vegAndFruitTransmitedData) {
                         const dinnerIngredients = dinnerTransmitedData
                             .map(x => x.ingredientsDeveloped).flat(1)
+
                         combinedArrays = combinedArrays.map(x => {
                             dinnerIngredients.forEach(y => {
                                 if (x.product === y.product) {
@@ -111,6 +112,7 @@ const PickingPanel = function () {
                     }
                 }
                 if (combinedArrays.length === 0) {
+                    console.table(dinnerTransmitedData)
                     dinnerTransmitedData
                         .map(x => combinedArrays.push(x.ingredientsDeveloped))
                     return combinedArrays.flat(1)
@@ -144,11 +146,12 @@ const PickingPanel = function () {
             </div>
             <div className="productsOnListObject">
                 {
+                    //http://localhost:8000/
                     mainButtonContentVisibilityCheck.vegAndFruit &&
                     <>
                         <GenerateSetOfItems liftedChildState={setVegAndFruitTransmitedData}
                             setOfItemData={vegAndFruitTransmitedData}
-                            endpoint={'http://localhost:8000/vegAndFruit'} />
+                            endpoint={'server115060.nazwa.pl/vegAndFruit'} />
                     </>
                 }
                 {

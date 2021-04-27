@@ -4,7 +4,7 @@ const router = express.Router()
 const fs = require('fs');
 
 router.get('/', async (request, response) => {
-    await fs.readFile('./src/components/everythingElseDatabase.json',
+    await fs.readFile('./database/everythingElseDatabase.json',
         'utf8',
         (err, data) => {
             // setTimeout(() => {

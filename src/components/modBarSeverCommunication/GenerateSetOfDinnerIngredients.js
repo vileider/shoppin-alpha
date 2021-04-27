@@ -25,7 +25,7 @@ export const GenerateSetOfDinnerIngredients = function ({
       }
       ingredientsFromDatabase ?? pullsetOfItemDatabase()
 
-   }, [liftedChildState, endpoint, pickedParentIngredients])
+   }, [endpoint, ingredientsFromDatabase])
 
    const imgUrlGenerator = (props) => {
       return require('../../images/' + props + '.png').default;
@@ -36,7 +36,7 @@ export const GenerateSetOfDinnerIngredients = function ({
          return imgUrlGenerator(props)
       } catch (e) {
          if (e.message) {
-            console.log('there is no image for this:', e.message)
+            // console.log('there is no image for this:', e.message)
             return require('../../images/picture-not-found.png').default
          }
       }
@@ -45,62 +45,41 @@ export const GenerateSetOfDinnerIngredients = function ({
    const productListDisplay = (
       generatedObjectForDisplay,
       visibilityOfEachListObjectUpdate,
-      addToProductCount
+      pickedItemForDinnerUpdate
    ) => {
-      visibilityOfEachListObjectUpdate = (event, productObject) => {
-         setIngredientsFromDatabase((ingredientsFromDatabase.map(x => {
+      pickedItemForDinnerUpdate = (item) => {
+         liftedChildState([...pickedParentIngredients, item])
+      }
+      visibilityOfEachListObjectUpdate = (productObject) => {
+         setIngredientsFromDatabase(ingredientsFromDatabase.map(x => {
             if (x.product === productObject) {
-               x.visibilityOnProductList = false;
+               pickedItemForDinnerUpdate(x.product)
                return x;
             } else {
                return x;
             }
-         })))
+         }))
       }
-      addToProductCount = async (e) => {
-         let alternativeNameInPromise = new Promise((resolve, reject) => {
-            resolve(e.target.alt)
-         })
-         await alternativeNameInPromise.then(value => {
-            liftedChildState(
-               setOfItemData.map(x => {
-                  x.product === value && x.count++
-                  return x
-               })
-            )
-         })
-      }
-      generatedObjectForDisplay = setOfItemData.map(x => {
-         if (x.visibilityOnProductList === true) {
+
+      generatedObjectForDisplay = ingredientsFromDatabase.map(x => {
+         if (!pickedParentIngredients.some(y => y === x.product)) {
             return (<div key={x.product}
                className={'product-section-' + x.product}
-               onClick={(event) => {
-                  visibilityOfEachListObjectUpdate(event, x.product);
+               onClick={() => {
+                  visibilityOfEachListObjectUpdate(x.product);
                }}
                title={x.product}>
                <img src={errorHandlerForUrlGenerator(x.product)
                } alt={x.product} position="absolute" />
             </div>
             )
-
-         } else if (x.visibilityOnProductList === false) {
-            return (<div key={x.product}
-               className={'fade'}
-               onClick={(event) => { addToProductCount(event) }}
-               title={x.product}>
-               <img src={errorHandlerForUrlGenerator(x.product)
-               } alt={x.product} />
-               <div className='productCounter' position="absolute">{x.count}</div>
-            </div>
-            )
          }
-         return x
-      }
-      )
+         return null;
+      })
       return generatedObjectForDisplay;
    }
 
-   const productListObject = (setOfItemData ?
+   const productListObject = (ingredientsFromDatabase ?
       productListDisplay() : (<div className='productsOnListObject' >
          <div className='preparingComponentAnimation'>
             <img src={gear} alt='waitning animation' />

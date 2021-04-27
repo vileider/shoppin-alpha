@@ -70,5 +70,11 @@
     "visibilityOnProductList": true,
     "price": 1.5,
     "count": 0
+  },
+  {
+    "product": "tomatos",
+    "visibilityOnProductList": true,
+    "price": "2",
+    "count": 0
   }
 ]

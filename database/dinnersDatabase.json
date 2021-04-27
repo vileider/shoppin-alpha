@@ -1,0 +1,51 @@
+[
+  {
+    "product": "fruitSalad",
+    "visibilityOnProductList": true,
+    "ingredients": [
+      "grapefruit",
+      "kiwi",
+      "banana",
+      "apple",
+      "pineapple"
+    ],
+    "ingredientsDeveloped": ""
+  },
+  {
+    "product": "egg&orange",
+    "visibilityOnProductList": true,
+    "ingredients": [
+      "orange",
+      "eggs"
+    ],
+    "ingredientsDeveloped": ""
+  },
+  {
+    "product": "peanuts&milk",
+    "visibilityOnProductList": true,
+    "ingredients": [
+      "milk",
+      "penuts"
+    ],
+    "ingredientsDeveloped": ""
+  },
+  {
+    "product": "chicken potetos",
+    "visibilityOnProductList": true,
+    "ingredients": [
+      "chicken",
+      "potato"
+    ],
+    "ingredientsDeveloped": ""
+  },
+  {
+    "product": "pancakes",
+    "visibilityOnProductList": true,
+    "ingredients": [
+      "milk",
+      "flour",
+      "eggs"
+    ],
+    "ingredientsDeveloped": ""
+  }
+]

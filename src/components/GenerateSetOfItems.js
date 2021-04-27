@@ -76,13 +76,14 @@ export const GenerateSetOfItems = function ({
       generatedObjectForDisplay = setOfItemData.map(x => {
          if (x.visibilityOnProductList === true) {
             return (<div key={x.product}
-               className={'product-section-' + x.product}
+               className={'normal'}
                onClick={(event) => {
                   visibilityOfEachListObjectUpdate(event, x.product);
                }}
                title={x.product}>
                <img src={errorHandlerForUrlGenerator(x.product)
-               } alt={x.product} position="absolute" />
+               } alt={x.product} />
+               <div className='productName' position="absolute">{x.product}</div>
             </div>
             )
 
@@ -93,6 +94,7 @@ export const GenerateSetOfItems = function ({
                title={x.product}>
                <img src={errorHandlerForUrlGenerator(x.product)
                } alt={x.product} />
+               <div className='productName' position="absolute">{x.product}</div>
                <div className='productCounter' position="absolute">{x.count}</div>
             </div>
             )

@@ -10,5 +10,17 @@
     "visibilityOnProductList": true,
     "price": "3",
     "count": 0
+  },
+  {
+    "product": "chicken",
+    "visibilityOnProductList": true,
+    "price": "5",
+    "count": 0
+  },
+  {
+    "product": "flour",
+    "visibilityOnProductList": true,
+    "price": "1",
+    "count": 0
   }
 ]

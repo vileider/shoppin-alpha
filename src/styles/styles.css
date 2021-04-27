@@ -58,7 +58,17 @@
   color: red;
 }
 
-.masterProductContainer .settingsMenu .itemMenu .dinnerPickingContainer, .masterProductContainer .settingsMenu .dinnerMenu .dinnerPickingContainer {
+.masterProductContainer .settingsMenu .itemMenu .addDinnerMenu .panelsContainer, .masterProductContainer .settingsMenu .dinnerMenu .addDinnerMenu .panelsContainer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.masterProductContainer .settingsMenu .itemMenu .addDinnerMenu .panelsContainer .inputPanel, .masterProductContainer .settingsMenu .dinnerMenu .addDinnerMenu .panelsContainer .inputPanel {
+  background-color: burlywood;
+}
+
+.masterProductContainer .settingsMenu .itemMenu .addDinnerMenu .dinnerPickingContainer, .masterProductContainer .settingsMenu .dinnerMenu .addDinnerMenu .dinnerPickingContainer {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -69,26 +79,42 @@
   margin: 0 auto;
 }
 
-.masterProductContainer .settingsMenu .itemMenu .dinnerPickingContainer .dinnerProductCategoryChosingPanel, .masterProductContainer .settingsMenu .dinnerMenu .dinnerPickingContainer .dinnerProductCategoryChosingPanel {
+.masterProductContainer .settingsMenu .itemMenu .addDinnerMenu .dinnerPickingContainer .dinnerProductCategoryChosingPanel, .masterProductContainer .settingsMenu .dinnerMenu .addDinnerMenu .dinnerPickingContainer .dinnerProductCategoryChosingPanel {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   margin: 0 auto;
+  height: 100%;
 }
 
-.masterProductContainer .settingsMenu .itemMenu .dinnerPickingContainer .dinnerProductCategoryChosingPanel .mainTopicButton, .masterProductContainer .settingsMenu .dinnerMenu .dinnerPickingContainer .dinnerProductCategoryChosingPanel .mainTopicButton {
+.masterProductContainer .settingsMenu .itemMenu .addDinnerMenu .dinnerPickingContainer .dinnerProductCategoryChosingPanel .mainTopicButton, .masterProductContainer .settingsMenu .dinnerMenu .addDinnerMenu .dinnerPickingContainer .dinnerProductCategoryChosingPanel .mainTopicButton {
   background-color: greenyellow;
   width: 25vw;
 }
 
-.masterProductContainer .settingsMenu .itemMenu .dinnerPickingContainer .dinnerProductCategoryChosingPanel .mainTopicChosenButton, .masterProductContainer .settingsMenu .dinnerMenu .dinnerPickingContainer .dinnerProductCategoryChosingPanel .mainTopicChosenButton {
+.masterProductContainer .settingsMenu .itemMenu .addDinnerMenu .dinnerPickingContainer .dinnerProductCategoryChosingPanel .mainTopicChosenButton, .masterProductContainer .settingsMenu .dinnerMenu .addDinnerMenu .dinnerPickingContainer .dinnerProductCategoryChosingPanel .mainTopicChosenButton {
   background-color: white;
   width: 25vw;
 }
 
-.masterProductContainer .settingsMenu .itemMenu .dinnerPickingContainer .dinnerProductCategoryChosingPanel img, .masterProductContainer .settingsMenu .dinnerMenu .dinnerPickingContainer .dinnerProductCategoryChosingPanel img {
+.masterProductContainer .settingsMenu .itemMenu .addDinnerMenu .dinnerPickingContainer .dinnerProductCategoryChosingPanel img, .masterProductContainer .settingsMenu .dinnerMenu .addDinnerMenu .dinnerPickingContainer .dinnerProductCategoryChosingPanel img {
   width: 100%;
   height: auto;
+}
+
+.masterProductContainer .settingsMenu .itemMenu .addDinnerMenu .dinnerPickingContainer .productsOnListObject, .masterProductContainer .settingsMenu .dinnerMenu .addDinnerMenu .dinnerPickingContainer .productsOnListObject {
+  height: 40vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -ms-flex-line-pack: start;
+      align-content: flex-start;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  overflow-y: scroll;
 }
 
 .masterProductContainer .productCategoryChosingPanel {
@@ -129,6 +155,20 @@
       -ms-flex-pack: center;
           justify-content: center;
   overflow-y: scroll;
+}
+
+.masterProductContainer .productsOnListObject .normal {
+  position: relative;
+  z-index: 2;
+}
+
+.masterProductContainer .productsOnListObject .normal .productName {
+  position: absolute;
+  font-weight: bold;
+  font-size: 15px;
+  z-index: 5;
+  top: 3%;
+  left: 3px;
 }
 
 .masterProductContainer .productsOnListObject .preparingComponentAnimation {
@@ -209,6 +249,15 @@
   font-size: 25px;
   z-index: 3;
   bottom: 2%;
+  left: 3px;
+}
+
+.masterProductContainer .productsOnListObject .fade .productName {
+  position: absolute;
+  font-weight: bold;
+  font-size: 15px;
+  z-index: 3;
+  top: 3%;
   left: 3px;
 }
 
