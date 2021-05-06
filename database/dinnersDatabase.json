@@ -47,5 +47,13 @@
       "eggs"
     ],
     "ingredientsDeveloped": ""
+  },
+  {
+    "product": "vbnb",
+    "visibilityOnProductList": true,
+    "ingredients": [
+      "apple"
+    ],
+    "ingredientsDeveloped": ""
   }
 ]

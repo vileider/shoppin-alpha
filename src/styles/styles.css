@@ -1,21 +1,48 @@
 .masterProductContainer .settingsMenu .buttonBar .itemButton, .masterProductContainer .settingsMenu .buttonBar .dinnerButton {
   padding-left: 10px;
   padding-right: 10px;
-  height: 3vh;
+  height: 2.5vh;
+  padding: 1.25vh;
+  border-left: 6px solid #000050;
+  background-color: lightcyan;
+  border-radius: 15px;
+  -webkit-box-shadow: 5px 9px 18px 5px #000000;
+          box-shadow: 5px 9px 18px 5px #000000;
+  font-size: 1rem;
 }
 
-.masterProductContainer .settingsMenu .buttonBar .itemButton {
-  background-color: green;
+body {
+  font-size: 100%;
+  margin: 0 auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  max-width: 1024;
+  height: 1366px;
 }
 
-.masterProductContainer .settingsMenu .buttonBar .dinnerButton {
-  background-color: #346b34;
+#root {
+  background-image: linear-gradient(137deg, #48b9df, #54a6c1, #2f1747);
+}
+
+@media screen and (min-width: 1024px) {
+  body {
+    max-width: 1024px;
+  }
+  #root {
+    margin: 0 auto;
+    max-width: 1024px;
+    -ms-grid-column-align: center;
+        justify-self: center;
+  }
 }
 
 .masterProductContainer {
-  margin: 1%;
   width: 100%;
-  max-height: 100vh;
+}
+
+.masterProductContainer .settingsMenu {
+  position: relative;
 }
 
 .masterProductContainer .settingsMenu radio {
@@ -26,10 +53,11 @@
 }
 
 .masterProductContainer .settingsMenu .buttonBar {
+  position: relative;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  min-height: 3vh;
+  min-height: 2.5vh;
 }
 
 .masterProductContainer .settingsMenu .itemMenu, .masterProductContainer .settingsMenu .dinnerMenu {
@@ -39,12 +67,17 @@
   display: flex;
   position: absolute;
   z-index: 5;
-  width: 100vw;
+  width: 100%;
   min-height: 40vh;
+  font-size: 2rem;
 }
 
 .masterProductContainer .settingsMenu .itemMenu .addItemMenu, .masterProductContainer .settingsMenu .dinnerMenu .addItemMenu {
   width: 54vw;
+}
+
+.masterProductContainer .settingsMenu .itemMenu button, .masterProductContainer .settingsMenu .dinnerMenu button {
+  font-size: 2rem;
 }
 
 .masterProductContainer .settingsMenu .itemMenu .infoPanel, .masterProductContainer .settingsMenu .dinnerMenu .infoPanel {
@@ -56,6 +89,10 @@
   font-weight: bold;
   width: 46vw;
   color: red;
+}
+
+.masterProductContainer .settingsMenu .itemMenu .addDinnerMenu, .masterProductContainer .settingsMenu .dinnerMenu .addDinnerMenu {
+  width: 100%;
 }
 
 .masterProductContainer .settingsMenu .itemMenu .addDinnerMenu .panelsContainer, .masterProductContainer .settingsMenu .dinnerMenu .addDinnerMenu .panelsContainer {
@@ -102,7 +139,7 @@
   height: auto;
 }
 
-.masterProductContainer .settingsMenu .itemMenu .addDinnerMenu .dinnerPickingContainer .productsOnListObject, .masterProductContainer .settingsMenu .dinnerMenu .addDinnerMenu .dinnerPickingContainer .productsOnListObject {
+.masterProductContainer .settingsMenu .itemMenu .addDinnerMenu .productsOnListObject, .masterProductContainer .settingsMenu .dinnerMenu .addDinnerMenu .productsOnListObject {
   height: 40vh;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -115,6 +152,22 @@
       -ms-flex-pack: center;
           justify-content: center;
   overflow-y: scroll;
+  position: -webkit-sticky;
+  position: sticky;
+}
+
+.masterProductContainer .settingsMenu .itemMenu .addDinnerMenu .productsOnListObject img, .masterProductContainer .settingsMenu .dinnerMenu .addDinnerMenu .productsOnListObject img {
+  z-index: 3;
+}
+
+.masterProductContainer .settingsMenu .itemMenu .addDinnerMenu .productsOnListObject .productName, .masterProductContainer .settingsMenu .dinnerMenu .addDinnerMenu .productsOnListObject .productName {
+  font-size: 0.5em;
+  top: -4.5vh;
+  position: relative;
+  z-index: 4;
+  background-color: black;
+  color: white;
+  font-weight: bolder;
 }
 
 .masterProductContainer .productCategoryChosingPanel {
@@ -155,6 +208,28 @@
       -ms-flex-pack: center;
           justify-content: center;
   overflow-y: scroll;
+  position: -webkit-sticky;
+  position: sticky;
+}
+
+.masterProductContainer .productsOnListObject div {
+  position: -webkit-sticky;
+  position: sticky;
+}
+
+.masterProductContainer .productsOnListObject div img {
+  z-index: 2;
+}
+
+.masterProductContainer .productsOnListObject div .productName {
+  font-size: 1em;
+  top: 1vh;
+  position: absolute;
+  z-index: 4;
+  background-color: black;
+  color: white;
+  font-weight: bolder;
+  word-break: keep-all;
 }
 
 .masterProductContainer .productsOnListObject .normal {
@@ -169,6 +244,10 @@
   z-index: 5;
   top: 3%;
   left: 3px;
+  background-color: black;
+  color: white;
+  font-weight: bolder;
+  word-break: keep-all;
 }
 
 .masterProductContainer .productsOnListObject .preparingComponentAnimation {
@@ -259,6 +338,7 @@
   z-index: 3;
   top: 3%;
   left: 3px;
+  word-break: keep-all;
 }
 
 @-webkit-keyframes fade-animation {
@@ -288,7 +368,8 @@
 
 .masterProductContainer .basketBackground {
   margin-top: 2vh;
-  position: relative;
+  position: -webkit-sticky;
+  position: sticky;
 }
 
 .masterProductContainer .basketBackground .productsOnBasketClosed {
@@ -307,6 +388,7 @@
   z-index: -1;
   height: 0;
   width: 100vw;
+  max-width: 1024px;
 }
 
 .masterProductContainer .basketBackground .productsOnBasketHide {
@@ -352,6 +434,7 @@
   z-index: -1;
   height: 0;
   width: 100vw;
+  max-width: 1024px;
   -webkit-animation: imageHideAnimation 2s;
           animation: imageHideAnimation 2s;
 }
@@ -417,6 +500,7 @@
   z-index: -1;
   height: 225px;
   width: 100vw;
+  max-width: 1024px;
   -webkit-animation: imageRevealAnimation 2s;
           animation: imageRevealAnimation 2s;
 }
@@ -442,7 +526,6 @@
 .basketSummary {
   border: 4px solid #792727;
   text-align: center;
-  width: 100%;
   z-index: 2;
 }
 /*# sourceMappingURL=styles.css.map */

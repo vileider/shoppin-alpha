@@ -6,19 +6,21 @@ export const ModBar = function () {
     const [clickedMenu, setclickedMenu] = useState('clickedMenuOff')
 
     const menuNameClassName = (newClassName) => {
-        clickedMenu === 'clickedMenuOff'
-            ? setclickedMenu(newClassName)
-            : setclickedMenu('clickedMenuOff')
+        return (
+            clickedMenu === 'clickedMenuOff' ? setclickedMenu(newClassName)
+                : clickedMenu === newClassName ? setclickedMenu('clickedMenuOff')
+                    : clickedMenu !== 'clickedMenuOff' ? setclickedMenu(newClassName)
+                        : null)
     }
 
     const itemButton = (
-        <div className='itemButton' onTouchStart={() => {
+        <div className='itemButton' onClick={() => {
             menuNameClassName('itemMenu')
         }}>
             ADD ITEM</div>
     )
     const dinnerButton = (
-        <div className='dinnerButton' onTouchStart={() => {
+        <div className='dinnerButton' onClick={() => {
             menuNameClassName('dinnerMenu')
         }}>
             ADD DINNER</div>

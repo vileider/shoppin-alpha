@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 
 export const SendDinner = function ({ dinnerParentName, pickedParentIngredients }) {
     const [infoMessage, setInfoMessage] = useState(
-        'Please Type Dinner Name, ande choose ingredients'
+        'Please Type Dinner Name, and choose ingredients'
     );
 
     const typedDataValidation = () => {
@@ -18,7 +18,7 @@ export const SendDinner = function ({ dinnerParentName, pickedParentIngredients 
 
     const sendDinnerToDatabase = async () => {
         setInfoMessage('sending to server')
-        const fetchTask = new Request('http://localhost:8000/addDinner',
+        const fetchTask = new Request('addDinner',
             {
                 method: 'post',
                 headers: {
@@ -42,7 +42,9 @@ export const SendDinner = function ({ dinnerParentName, pickedParentIngredients 
 
     return (<>
         {infoMessage}
-        <button onTouchStart={() => { typedDataValidation() }}>click</button>
+        {infoMessage !== 'sending to server'
+            && (<button className={'sendToServerButton'} onTouchStart={() => { typedDataValidation() }}>Add Dinner</button>)
+        }
     </>);
 }
 

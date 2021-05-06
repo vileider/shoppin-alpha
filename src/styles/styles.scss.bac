@@ -1,7 +1,7 @@
 
 $productSize: 12vh;
 $recipeBillImageHeight: 190px; 
-$buttonBarHeight: 2.5vh;
+$buttonBarHeight: 3vh;
 
 $backgroundRecipePadding: 20px;
 %buttonBarButtons {
@@ -13,7 +13,7 @@ $backgroundRecipePadding: 20px;
     background-color: lightcyan;
     border-radius: 15px;
     box-shadow:  5px 9px 18px 5px #000000;
-    font-size: 1rem;
+        font-size: 1rem;
 }
 
 %itemButton{
@@ -29,7 +29,6 @@ $backgroundRecipePadding: 20px;
     }
 }
 body{
-    font-size: 100%;
     margin:0 auto;
     display: flex;
     max-width: 1024;
@@ -40,7 +39,7 @@ body{
         137deg
         ,#48b9df, #54a6c1, #2f1747);
 }
-// linear-gradient(137deg, #48b9df, #0e3846,#622b99
+//linear-gradient(137deg, #48b9df, #0e3846,#622b99
 @media screen and (min-width: 1024px) {
     body{
         max-width: 1024px;
@@ -73,20 +72,18 @@ body{
             @extend %itemButton;
             @extend %dinnerButton;
         }
-        .itemMenu,  .dinnerMenu {
+        .itemMenu,  .dinnerMenu{
             background-color: rgb(188, 238, 223);
             display: flex;
             position: absolute;
             z-index: 5;
             width: 100%;
             min-height: 40vh;
-            font-size: 2rem;
+        
             .addItemMenu{
-                width: 54vw;
+                // width: 54vw;
             }
-            button{
-                font-size: 2rem;
-            }
+            
             .infoPanel{
                 align-self: center;
                 text-align: center;
@@ -125,30 +122,24 @@ body{
                             width: 100%;
                             height: auto;
                         }  
-                    } 
-                } 
-                .productsOnListObject{
-                    height: 40vh;
-                    display: flex;
-                    flex-wrap: wrap;
-                    align-content: flex-start;
-                    justify-content: center;
-                    overflow-y: scroll;
-                    position: sticky;
-                        img{
-                            z-index: 3;
-                        }
+                    }  
+                    .productsOnListObject{
+                        height: 40vh;
+                        display: flex;
+                        flex-wrap: wrap;
+                        align-content: flex-start;
+                        justify-content: center;
+                        overflow-y: scroll;
                         .productName{
-                           font-size: 0.5em;
-                           top: -4.5vh;
-                           position: relative;
-                           z-index: 4;
-                           background-color: black;
-                           color: white;
-                           font-weight: bolder;
+                            position: absolute;
+                            font-weight: bold;
+                            font-size: 15px; 
+                            z-index: 3;
+                            top: 3%;
+                            left: 3px; 
                         }
+                    }
                 }
-                
             }
         }
         
@@ -178,25 +169,6 @@ body{
         align-content: flex-start;
         justify-content: center;
         overflow-y: scroll;
-        position: sticky;
-        
-        div{
-            position: sticky;
-                    img{
-                        z-index: 2;
-                    }
-                    .productName{
-                        font-size: 1em;
-                        top: 1vh;
-                        position: absolute;
-                        z-index: 4;
-                        background-color: black;
-                        color: white;
-                        font-weight: bolder;
-                        word-break: keep-all; 
-                    }
-        }
-        
         .normal{
             position: relative;
             z-index: 2;
@@ -206,11 +178,7 @@ body{
                 font-size: 15px; 
                 z-index: 5;
                 top: 3%;
-                left: 3px;
-                background-color: black;
-                color: white;
-                font-weight: bolder;
-                word-break: keep-all; 
+                left: 3px; 
             }
         }
         
@@ -254,8 +222,7 @@ body{
                 font-size: 15px; 
                 z-index: 3;
                 top: 3%;
-                left: 3px;
-                word-break: keep-all; 
+                left: 3px; 
             }
         }
         @keyframes fade-animation {

@@ -52,7 +52,7 @@ export const Dinner = function ({
     ) => {
         readIngredientsDataFromDatabase = async (demadedItems) => {
             let filteredDataOnDemand
-            const fetchTask = new Request('http://localhost:8000/machingDinnerData', {
+            const fetchTask = new Request('machingDinnerData', {
                 method: 'post',
                 body: JSON.stringify(demadedItems),
                 headers: {
@@ -99,13 +99,13 @@ export const Dinner = function ({
         generatedObjectForFadeDisplay =
             setOfItemData.filter(x => {
                 return x.visibilityOnProductList === false;
-            }).map(x => (<div key={x.product}
+            }).map(x => (<><div key={x.product}
                 className={'fade'}
                 title={x.product}>
                 <img src={errorHandlerForUrlGenerator(x.product)
                 } alt={x.product} />
-                <div className='productName' position="absolute">{x.product}</div>
             </div>
+                <div className='productName' position="absolute">{x.product}</div></>
             ))
 
         return (<>{generatedObjectForDisplay} {generatedObjectForFadeDisplay}</>);

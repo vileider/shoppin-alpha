@@ -55,10 +55,10 @@ const PickingPanel = function () {
             setMainButtonContentVisibilityCheck(mainButtonStateChange(value))
         })
     }
-
+    //onTouchStart
     const mainTopicButton = (imageSource, altName) => {
         if (mainButtonContentVisibilityCheck[altName] === false) {
-            return (<div className='mainTopicButton' onTouchStart={(e) => { mainButtonClick(e) }}>
+            return (<div className='mainTopicButton' onClick={(e) => { mainButtonClick(e) }}>
                 <img src={imageSource} alt={altName} />
             </div >)
         } else {
@@ -144,6 +144,7 @@ const PickingPanel = function () {
                 {mainTopicButton(imgUrlGenerator('everythingElse'), 'everythingElse')}
 
             </div>
+            {console.log(329)}
             <div className="productsOnListObject">
                 {
                     //http://localhost:8000/
@@ -151,7 +152,7 @@ const PickingPanel = function () {
                     <>
                         <GenerateSetOfItems liftedChildState={setVegAndFruitTransmitedData}
                             setOfItemData={vegAndFruitTransmitedData}
-                            endpoint={'server115060.nazwa.pl/vegAndFruit'} />
+                            endpoint={'/vegAndFruit'} />
                     </>
                 }
                 {
@@ -159,7 +160,7 @@ const PickingPanel = function () {
                     <>
                         <GenerateSetOfItems liftedChildState={setChemicalTransmitedData}
                             setOfItemData={chemicalTransmitedData}
-                            endpoint={'http://localhost:8000/chemicals'} />
+                            endpoint={'/chemicals'} />
                     </>
                 }
                 {
@@ -167,7 +168,7 @@ const PickingPanel = function () {
                     <>
                         <Dinner liftedChildState={setDinnerTransmitedData}
                             setOfItemData={dinnerTransmitedData}
-                            endpoint={'http://localhost:8000/dinners'} />
+                            endpoint={'/dinners'} />
                     </>
                 }
                 {
@@ -175,7 +176,7 @@ const PickingPanel = function () {
                     <>
                         <GenerateSetOfItems liftedChildState={setDairyWheatAndEggsTransmitedData}
                             setOfItemData={dairyWheatAndEggsTransmitedData}
-                            endpoint={'http://localhost:8000/dairyWheatAndEggs'} />
+                            endpoint={'/dairyWheatAndEggs'} />
                     </>
                 }
                 {
@@ -183,7 +184,7 @@ const PickingPanel = function () {
                     <>
                         <GenerateSetOfItems liftedChildState={setEverythingElseTransmitedData}
                             setOfItemData={everythingElseTransmitedData}
-                            endpoint={'http://localhost:8000/everythingElse'} />
+                            endpoint={'/everythingElse'} />
                     </>
                 }
             </div>

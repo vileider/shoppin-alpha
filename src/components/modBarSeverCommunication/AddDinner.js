@@ -57,6 +57,7 @@ export const AddDinner = function () {
                         <button key={`button+${x.id}`}
                             disabled={x.id !== counter || x[`item${x.id}`] === ''}
                             onClick={(e) => { plusButtonAction(e) }}> +</button >
+
                     </div>
 
                     :
@@ -87,6 +88,7 @@ export const AddDinner = function () {
 
                     <button disabled={counter >= 1}
                         onClick={(e) => { plusButtonAction(e) }}> +</button >
+                        Add ingrendient
                     {generateInputFields()}
                 </div>
                 <div className='infoPanel'>

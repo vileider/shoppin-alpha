@@ -15,7 +15,7 @@ export const AddItem = function () {
     }
     const addItemToDatabase = async () => {
         SetInfoMessage('sending to server')
-        const fetchTask = new Request('http://localhost:8000/addItem',
+        const fetchTask = new Request('addItem',
             {
                 method: 'post',
                 headers: {

@@ -7,6 +7,8 @@ const fs = require('fs');
 const { send } = require('process');
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+const path = require('path');
+app.use(express.static(path.join(__dirname, 'build')))
 
 
 
@@ -21,6 +23,9 @@ app.use('/addItem', require('./server/routerAddItem.js'))
 app.use('/addDinner', require('./server/routerAddDinner.js'))
 
 
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public', 'index.html'))
+})
 
 app.listen(8000, () => { console.log('server on port 8000') })
 

@@ -70,7 +70,8 @@ export const GenerateSetOfDinnerIngredients = function ({
                }}
                title={x.product}>
                <img src={errorHandlerForUrlGenerator(x.product)
-               } alt={x.product} position="absolute" />
+               } alt={x.product} />
+               <div className='productName'>{x.product}</div>
             </div>
             )
          }

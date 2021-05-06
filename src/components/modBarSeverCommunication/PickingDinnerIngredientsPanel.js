@@ -36,7 +36,7 @@ export const PickingDinnerIngredientsPanel = function ({ liftedChildState, picke
 
     const mainTopicButton = (imageSource, altName) => {
         if (mainButtonContentVisibilityCheck[altName] === false) {
-            return (<div className='mainTopicButton' onTouchStart={(e) => { mainButtonClick(e) }}>
+            return (<div className='mainTopicButton' onClick={(e) => { mainButtonClick(e) }}>
                 <img src={imageSource} alt={altName} />
             </div >)
         } else {
@@ -67,7 +67,7 @@ export const PickingDinnerIngredientsPanel = function ({ liftedChildState, picke
                     <GenerateSetOfDinnerIngredients
                         liftedChildState={liftedChildState}
                         pickedParentIngredients={pickedParentIngredients}
-                        endpoint={'http://localhost:8000/vegAndFruit'} />
+                        endpoint={'vegAndFruit'} />
                 </>
             }
             {
@@ -76,7 +76,7 @@ export const PickingDinnerIngredientsPanel = function ({ liftedChildState, picke
                     <GenerateSetOfDinnerIngredients
                         liftedChildState={liftedChildState}
                         pickedParentIngredients={pickedParentIngredients}
-                        endpoint={'http://localhost:8000/chemicals'} />
+                        endpoint={'chemicals'} />
                 </>
             }
             {
@@ -85,7 +85,7 @@ export const PickingDinnerIngredientsPanel = function ({ liftedChildState, picke
                     <GenerateSetOfDinnerIngredients
                         liftedChildState={liftedChildState}
                         pickedParentIngredients={pickedParentIngredients}
-                        endpoint={'http://localhost:8000/dairyWheatAndEggs'} />
+                        endpoint={'dairyWheatAndEggs'} />
                 </>
             }
             {
@@ -94,7 +94,7 @@ export const PickingDinnerIngredientsPanel = function ({ liftedChildState, picke
                     <GenerateSetOfDinnerIngredients
                         liftedChildState={liftedChildState}
                         pickedParentIngredients={pickedParentIngredients}
-                        endpoint={'http://localhost:8000/everythingElse'} />
+                        endpoint={'everythingElse'} />
                 </>
             }
         </div></>)
