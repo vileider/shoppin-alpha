@@ -21,7 +21,8 @@ export const Basket = function (props) {
                     style={{ flex: '80%' }}>
                     {`${x.count}  ${x.product}`}
                 </div>
-                <div className="price" >{x.price * x.count} {` £`} </div>
+                <div className="price" >{
+                    (Math.round((x.price * x.count) * 100) / 100).toFixed(2)} {` £`} </div>
             </div>
             ))
         } catch (e) {
@@ -58,7 +59,7 @@ export const Basket = function (props) {
 
     </div>
         <div className="basketSummary" onClick={() => { recipeFold() }}>
-            {basketSummary()}
+            {(Math.round(basketSummary() * 100) / 100).toFixed(2)}
         </div>
     </>
     )

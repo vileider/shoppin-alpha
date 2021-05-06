@@ -70,7 +70,7 @@ export const AddItem = function () {
 
                     <div className='priceOfAddedProduct'>
                         <div className='settingsTitle'>Price:</div>
-                        <input type='text' maxLength={2} size='1' onChange={(e) => {
+                        <input type='text' maxLength={3} size='1' onChange={(e) => {
                             itemMenuStateChange(itemMenuState.productName,
                                 itemMenuState.productCategory,
                                 e.target.value)

@@ -49,6 +49,7 @@ export const AddDinner = function () {
                         <input key={`input-${x.id}`} type='text' maxLength={8}
                             value={pickedIngredients[x.id - 1] || ''}
                             readOnly
+                            disabled
                         />
 
                         <button key={`button${x.id}`} disabled={x.id !== counter}
@@ -57,7 +58,7 @@ export const AddDinner = function () {
                         <button key={`button+${x.id}`}
                             disabled={x.id !== counter || x[`item${x.id}`] === ''}
                             onClick={(e) => { plusButtonAction(e) }}> +</button >
-
+                        Please choose category and pick an item.
                     </div>
 
                     :

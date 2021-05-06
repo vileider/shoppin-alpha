@@ -96,19 +96,20 @@ export const Dinner = function ({
                 <div className='productName' position="absolute">{x.product}</div>
             </div>
             ))
-        generatedObjectForFadeDisplay =
-            setOfItemData.filter(x => {
-                return x.visibilityOnProductList === false;
-            }).map(x => (<><div key={x.product}
-                className={'fade'}
-                title={x.product}>
-                <img src={errorHandlerForUrlGenerator(x.product)
-                } alt={x.product} />
-            </div>
-                <div className='productName' position="absolute">{x.product}</div></>
-            ))
+        // generatedObjectForFadeDisplay =
+        //     setOfItemData.filter(x => {
+        //         return x.visibilityOnProductList === false;
+        //     }).map(x => (<><div key={x.product}
+        //         className={'fade'}
+        //         title={x.product}>
+        //         <img src={errorHandlerForUrlGenerator(x.product)
+        //         } alt={x.product} />
+        //     </div>
+        //         <div className='productName' position="absolute">{x.product}</div></>
+        //     ))
 
-        return (<>{generatedObjectForDisplay} {generatedObjectForFadeDisplay}</>);
+        // return (<>{generatedObjectForDisplay} {generatedObjectForFadeDisplay}</>);
+        return generatedObjectForDisplay;
     }
 
     const productListObject = (setOfItemData ?

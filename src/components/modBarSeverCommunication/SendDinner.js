@@ -43,7 +43,9 @@ export const SendDinner = function ({ dinnerParentName, pickedParentIngredients 
     return (<>
         {infoMessage}
         {infoMessage !== 'sending to server'
-            && (<button className={'sendToServerButton'} onTouchStart={() => { typedDataValidation() }}>Add Dinner</button>)
+            && (<button className={'sendToServerButton'} onTouchStart={() => {
+                typedDataValidation()
+            }}>Add Dinner</button>)
         }
     </>);
 }

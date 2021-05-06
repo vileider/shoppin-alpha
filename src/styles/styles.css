@@ -41,6 +41,10 @@ body {
   width: 100%;
 }
 
+.masterProductContainer ::-webkit-scrollbar {
+  width: 5px;
+}
+
 .masterProductContainer .settingsMenu {
   position: relative;
 }
@@ -74,6 +78,22 @@ body {
 
 .masterProductContainer .settingsMenu .itemMenu .addItemMenu, .masterProductContainer .settingsMenu .dinnerMenu .addItemMenu {
   width: 54vw;
+}
+
+.masterProductContainer .settingsMenu .itemMenu .addItemMenu .nameOfAddedProduct input, .masterProductContainer .settingsMenu .dinnerMenu .addItemMenu .nameOfAddedProduct input {
+  width: 10em;
+  height: 1em;
+  font-size: 2rem;
+}
+
+.masterProductContainer .settingsMenu .itemMenu .addItemMenu .categoryOfAddedProduct input, .masterProductContainer .settingsMenu .dinnerMenu .addItemMenu .categoryOfAddedProduct input {
+  width: 2em;
+  height: 2em;
+}
+
+.masterProductContainer .settingsMenu .itemMenu .addItemMenu .categoryOfAddedProduct .priceOfAddedProduct input, .masterProductContainer .settingsMenu .dinnerMenu .addItemMenu .categoryOfAddedProduct .priceOfAddedProduct input {
+  height: 1em;
+  font-size: 2rem;
 }
 
 .masterProductContainer .settingsMenu .itemMenu button, .masterProductContainer .settingsMenu .dinnerMenu button {
@@ -524,7 +544,7 @@ body {
 }
 
 .basketSummary {
-  border: 4px solid #792727;
+  border: 1vh solid #792727;
   text-align: center;
   z-index: 2;
 }
