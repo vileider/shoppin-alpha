@@ -49,7 +49,7 @@ export const AddDinner = function () {
                         <input key={`input-${x.id}`} type='text' maxLength={8}
                             value={pickedIngredients[x.id - 1] || ''}
                             readOnly
-                            disabled
+                            disabledlo
                         />
 
                         <button key={`button${x.id}`} disabled={x.id !== counter}

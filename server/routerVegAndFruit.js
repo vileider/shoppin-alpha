@@ -3,15 +3,19 @@ const router = express.Router()
 const fs = require('fs');
 
 router.get('/', async (request, response) => {
-    await fs.readFile('./database/vegAndFruitDatabase.json',
+    fs.readFile('./database/vegAndFruitDatabase.json',
         'utf8',
         (err, data) => {
-            // setTimeout(() => {
+
             if (err) throw err;
-            let fileJson = JSON.parse(data);
-            console.log('send from entry-point /vegAndfruit')
-            response.json(fileJson)
-            // }, 3000);
+            setTimeout(() => {
+                fileJson = JSON.parse(data)
+                //console.log(fileJson)
+                response.json(fileJson)
+
+                console.log('send from entry-point /vegAndfruit')
+
+            }, 500);
 
         })
 })

@@ -39,16 +39,6 @@
     "ingredientsDeveloped": ""
   },
   {
-    "product": "pancakes",
-    "visibilityOnProductList": true,
-    "ingredients": [
-      "milk",
-      "flour",
-      "eggs"
-    ],
-    "ingredientsDeveloped": ""
-  },
-  {
     "product": "vbnb",
     "visibilityOnProductList": true,
     "ingredients": [

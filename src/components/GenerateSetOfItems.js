@@ -22,10 +22,9 @@ export const GenerateSetOfItems = function ({
                console.error('Error:', error);
             });
       }
-      // setTimeout(() => {
       setOfItemData ?? pullsetOfItemDatabase()
-      // }, 500)
    }, [liftedChildState, endpoint, setOfItemData])
+
 
    const imgUrlGenerator = (props) => {
       return require('../images/' + props + '.png').default;
@@ -41,15 +40,45 @@ export const GenerateSetOfItems = function ({
          }
       }
    }
+   const deleteConfirmation = (itemName) => {
+      let x = window.confirm(`Are You sure, You want to delete ${itemName}?`)
+      x === true && removeItemFromDatabase(itemName)
 
+   }
+
+
+   const removeItemFromDatabase = (itemName) => {
+      //http://localhost:8000/
+      const sendItemNameToServer = async () => {
+         const fetchTask = new Request('http://localhost:8000/deleteItem',
+            {
+               method: 'POST',
+               headers: {
+                  'Content-Type': 'application/json',
+               },
+               body: JSON.stringify({ itemName: `${itemName}` })
+            });
+         await fetch(fetchTask)
+            .then(response => console.log('response', response.json()))
+            .then(data => liftedChildState(data))
+            .catch((error) => {
+               console.error('Error:', error);
+            });
+      }
+
+      sendItemNameToServer()
+      console.log(`remove item ${itemName}`)
+
+
+
+   }
    const productListDisplay = (
       generatedObjectForDisplay,
-      generatedObjectForFadeDisplay,
       visibilityOfEachListObjectUpdate,
-      addToProductCount
+      addToProductCount,
+      addToProductCount2
    ) => {
-      visibilityOfEachListObjectUpdate = (event, productObject) => {
-         event.target.className = 'fade';
+      visibilityOfEachListObjectUpdate = (e, productObject) => {
          liftedChildState((setOfItemData.map(x => {
             if (x.product === productObject) {
                x.visibilityOnProductList = false;
@@ -73,6 +102,14 @@ export const GenerateSetOfItems = function ({
             )
          })
       }
+      addToProductCount2 = (productName) => {
+         liftedChildState(
+            setOfItemData.map(x => {
+               x.product === productName && x.count++
+               return x
+            })
+         )
+      }
       generatedObjectForDisplay = setOfItemData.map(x => {
          if (x.visibilityOnProductList === true) {
             return (<div key={x.product}
@@ -81,9 +118,12 @@ export const GenerateSetOfItems = function ({
                   visibilityOfEachListObjectUpdate(event, x.product);
                }}
                title={x.product}>
-               <img src={errorHandlerForUrlGenerator(x.product)
+               <img className='productImage' src={errorHandlerForUrlGenerator(x.product)
                } alt={x.product} />
                <div className='productName' position="absolute">{x.product}</div>
+               <img className='deleteProductImage' src={errorHandlerForUrlGenerator('delete')}
+                  alt='delete Button' onClick={() => deleteConfirmation(x.product)
+                  } />
             </div>
             )
 
@@ -92,10 +132,12 @@ export const GenerateSetOfItems = function ({
                className={'fade'}
                onClick={(event) => { addToProductCount(event) }}
                title={x.product}>
-               <img src={errorHandlerForUrlGenerator(x.product)
-               } alt={x.product} />
-               <div className='productName' position="absolute">{x.product}</div>
-               <div className='productCounter' position="absolute">{x.count}</div>
+               <img src={errorHandlerForUrlGenerator(x.product)}
+                  alt={x.product}
+               />
+               <div className='productName'
+                  onClick={() => { addToProductCount2(x.product) }}>{x.product}</div>
+               <div className='productCounter' >{x.count}</div>
             </div>
             )
          }

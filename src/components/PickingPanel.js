@@ -144,7 +144,7 @@ const PickingPanel = function () {
                 {mainTopicButton(imgUrlGenerator('everythingElse'), 'everythingElse')}
 
             </div>
-            {console.log(329)}
+
             <div className="productsOnListObject">
                 {
                     //http://localhost:8000/
@@ -152,7 +152,7 @@ const PickingPanel = function () {
                     <>
                         <GenerateSetOfItems liftedChildState={setVegAndFruitTransmitedData}
                             setOfItemData={vegAndFruitTransmitedData}
-                            endpoint={'/vegAndFruit'} />
+                            endpoint={'http://localhost:8000/vegAndFruit'} />
                     </>
                 }
                 {

@@ -136,6 +136,7 @@ body{
                         display: flex;
                         margin: 0 auto;
                         height: 100%;
+                        width:100%;
                         .mainTopicButton{
                             background-color: greenyellow;
                             width: 25vw;
@@ -205,18 +206,27 @@ body{
         
         div{
             position: sticky;
-                    img{
+                    .productImage{
                         z-index: 2;
                     }
                     .productName{
                         font-size: 1em;
-                        top: 1vh;
+                        top: 3%;
+                        left: 3px;
                         position: absolute;
                         z-index: 4;
-                        background-color: black;
+                        background-color: rgba(0, 0, 0, 0.7);
                         color: white;
                         font-weight: bolder;
-                        word-break: keep-all; 
+                        word-break: break-word; 
+                    }
+                    .deleteProductImage{
+                        height: 13%;
+                        width: auto;
+                        position: absolute;
+                        z-index: 4;
+                        right: 2px;
+                        bottom: 4px;
                     }
         }
         
@@ -230,10 +240,10 @@ body{
                 z-index: 5;
                 top: 3%;
                 left: 3px;
-                background-color: black;
+                background-color: rgba(0, 0, 0, 0.7);
                 color: white;
                 font-weight: bolder;
-                word-break: keep-all; 
+                word-break: break-word; 
             }
         }
         
@@ -278,7 +288,7 @@ body{
                 z-index: 3;
                 top: 3%;
                 left: 3px;
-                word-break: keep-all; 
+                word-break: break-word; 
             }
         }
         @keyframes fade-animation {

@@ -70,5 +70,65 @@
         "visibilityOnProductList": true,
         "price": 1.5,
         "count": 0
+    },
+    {
+        "product": "ducks",
+        "visibilityOnProductList": true,
+        "price": "123",
+        "count": 0
+    },
+    {
+        "product": "duck3233",
+        "visibilityOnProductList": true,
+        "price": "44",
+        "count": 0
+    },
+    {
+        "product": "ducks22",
+        "visibilityOnProductList": true,
+        "price": "123",
+        "count": 0
+    },
+    {
+        "product": "duck333",
+        "visibilityOnProductList": true,
+        "price": "44",
+        "count": 0
+    },
+    {
+        "product": "ducks33",
+        "visibilityOnProductList": true,
+        "price": "123",
+        "count": 0
+    },
+    {
+        "product": "duck3333",
+        "visibilityOnProductList": true,
+        "price": "44",
+        "count": 0
+    },
+    {
+        "product": "duck666s",
+        "visibilityOnProductList": true,
+        "price": "123",
+        "count": 0
+    },
+    {
+        "product": "duck3343",
+        "visibilityOnProductList": true,
+        "price": "44",
+        "count": 0
+    },
+    {
+        "product": "duck454s",
+        "visibilityOnProductList": true,
+        "price": "123",
+        "count": 0
+    },
+    {
+        "product": "duck33456453",
+        "visibilityOnProductList": true,
+        "price": "44",
+        "count": 0
     }
 ]

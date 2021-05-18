@@ -68,7 +68,6 @@ export const Dinner = function ({
             return filteredDataOnDemand
         }
         visibilityOfEachListObjectUpdate = async (event, productObject, demandedItems) => {
-            event.target.className = 'fade';
             const ingredientsFromDatabase =
                 await readIngredientsDataFromDatabase(demandedItems)
                     .then(value => value)
