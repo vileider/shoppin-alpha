@@ -44,6 +44,28 @@ export const Dinner = function ({
         }
     }
 
+    const deleteConfirmation = (itemName) => {
+        let x = window.confirm(`Are You sure, You want to delete ${itemName}?`)
+        x === true && removeItemFromDatabase(itemName)
+
+    }
+
+    const removeItemFromDatabase = async (itemName) => {
+        //http://localhost:8000/
+        const resolve = await fetch('http://localhost:8000/deleteItem',
+            {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ itemName: `${itemName}` })
+            })
+        const data = await resolve.json()
+        console.log(data)
+        //liftedChildState(data)
+        console.log(`remove item ${itemName}`)
+    }
+
     const productListDisplay = (
         generatedObjectForDisplay,
         generatedObjectForFadeDisplay,
@@ -67,6 +89,7 @@ export const Dinner = function ({
                 });
             return filteredDataOnDemand
         }
+
         visibilityOfEachListObjectUpdate = async (event, productObject, demandedItems) => {
             const ingredientsFromDatabase =
                 await readIngredientsDataFromDatabase(demandedItems)
@@ -81,6 +104,7 @@ export const Dinner = function ({
                 }
             })))
         }
+
         generatedObjectForDisplay =
             setOfItemData.filter(x => {
                 return x.visibilityOnProductList === true;
@@ -93,22 +117,13 @@ export const Dinner = function ({
                 <img src={errorHandlerForUrlGenerator(x.product)
                 } alt={x.product} position="absolute" />
                 <div className='productName' position="absolute">{x.product}</div>
+                <img className='deleteProductImage' src={errorHandlerForUrlGenerator('delete')}
+                    alt='delete Button' onClick={() => deleteConfirmation(x.product)
+                    } />
             </div>
             ))
-        // generatedObjectForFadeDisplay =
-        //     setOfItemData.filter(x => {
-        //         return x.visibilityOnProductList === false;
-        //     }).map(x => (<><div key={x.product}
-        //         className={'fade'}
-        //         title={x.product}>
-        //         <img src={errorHandlerForUrlGenerator(x.product)
-        //         } alt={x.product} />
-        //     </div>
-        //         <div className='productName' position="absolute">{x.product}</div></>
-        //     ))
-
-        // return (<>{generatedObjectForDisplay} {generatedObjectForFadeDisplay}</>);
         return generatedObjectForDisplay;
+
     }
 
     const productListObject = (setOfItemData ?

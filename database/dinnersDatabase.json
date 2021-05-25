@@ -28,22 +28,5 @@
       "penuts"
     ],
     "ingredientsDeveloped": ""
-  },
-  {
-    "product": "chicken potetos",
-    "visibilityOnProductList": true,
-    "ingredients": [
-      "chicken",
-      "potato"
-    ],
-    "ingredientsDeveloped": ""
-  },
-  {
-    "product": "vbnb",
-    "visibilityOnProductList": true,
-    "ingredients": [
-      "apple"
-    ],
-    "ingredientsDeveloped": ""
   }
 ]

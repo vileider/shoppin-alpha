@@ -1,9 +1,21 @@
 const express = require('express');
 const router = express.Router()
 const fs = require('fs');
+const util = require('util');
+const writeFile = util.promisify(fs.writeFile);
 
+const amendItemAtDatabase = async (itemForErase, callback) => {
 
-const deleteItemFromDatabase = (itemForErase) => {
+    const PickDataFromDatabase = (_callback) => {
+        fs.readFile('./database/vegAndFruitDatabase.json',
+            'utf8',
+            async (err, data) => {
+                if (err) throw err;
+                fileJson = await JSON.parse(data)
+                await _callback(fileJson)
+            })
+    }
+
     const listOfDatabase = [
         {
             databaseName: 'vegAndFruit',
@@ -26,57 +38,44 @@ const deleteItemFromDatabase = (itemForErase) => {
             databaseFileName: 'dinnersDatabase.json'
         }
     ]
-    const overwriteDatabase = (databaseFileName, database) => {
-        fs.writeFile(`./database/${databaseFileName}`,
-            JSON.stringify(database, null, 2),
-            (err) => {
-                if (err) throw err;
-            }
-        )
+    const overwriteDatabase = async (databaseFileName, database) => {
+        const buf = await writeFile(`./database/${databaseFileName}`
+            , JSON.stringify(database, null, 2))
+            .catch(er => {
+                console.log(er);
+            });
     }
 
     listOfDatabase.forEach(x => {
         fs.readFile(`./database/${x.databaseFileName}`,
             'utf8',
-            (err, data) => {
+            async (err, data) => {
                 if (err) throw err;
-                let fileJson = JSON.parse(data);
+                let fileJson = await JSON.parse(data);
                 if (fileJson.filter(x => x.product === itemForErase).length > 0) {
                     fileJson = fileJson.filter(x => x.product !== itemForErase);
-                    overwriteDatabase(`${x.databaseFileName}`, fileJson)
-                    console.log(`item${itemForErase} deleted from ${x.databaseName}`);
+                    await overwriteDatabase(`${x.databaseFileName}`, fileJson)
+                    PickDataFromDatabase(callback)
+                    console.log(`item: ${itemForErase}, deleted from ${x.databaseName},
+                    DB lenght: ${fileJson.length}`);
                 }
             })
     })
 
 }
-const sendDataFromDatabase = async () => {
-    await fs.readFile('./database/vegAndFruitDatabase.json',
-        'utf8',
-        (err, data) => {
-            // setTimeout(() => {
-            if (err) throw err;
-            fileJson = JSON.parse(data)
-            console.log('file jason', fileJson.length)
-            console.log('send from entry-point /vegAndfruit')
-            return fileJson
 
-
-
-            //}, 500);
-
-        })
-}
 
 
 
 router.post('/', async (request, response) => {
 
-    const dataFromClient = request.body
-    //console.log(dataFromClient.itemName)
-    await deleteItemFromDatabase(dataFromClient.itemName);
+    const callback = (data) => {
+        response.send(JSON.stringify(data))
+    }
 
-    await response.json(sendDataFromDatabase())
+    const dataFromClient = await request.body
+
+    amendItemAtDatabase(dataFromClient.itemName, callback);
 
 })
 

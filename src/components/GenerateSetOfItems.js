@@ -35,43 +35,33 @@ export const GenerateSetOfItems = function ({
          return imgUrlGenerator(props)
       } catch (e) {
          if (e.message) {
-            console.log('there is no image for this:', e.message)
+            //console.log('there is no image for this:', e.message)
             return require('../images/picture-not-found.png').default
          }
       }
    }
+
    const deleteConfirmation = (itemName) => {
       let x = window.confirm(`Are You sure, You want to delete ${itemName}?`)
       x === true && removeItemFromDatabase(itemName)
 
    }
 
-
-   const removeItemFromDatabase = (itemName) => {
+   const removeItemFromDatabase = async (itemName) => {
       //http://localhost:8000/
-      const sendItemNameToServer = async () => {
-         const fetchTask = new Request('http://localhost:8000/deleteItem',
-            {
-               method: 'POST',
-               headers: {
-                  'Content-Type': 'application/json',
-               },
-               body: JSON.stringify({ itemName: `${itemName}` })
-            });
-         await fetch(fetchTask)
-            .then(response => console.log('response', response.json()))
-            .then(data => liftedChildState(data))
-            .catch((error) => {
-               console.error('Error:', error);
-            });
-      }
-
-      sendItemNameToServer()
+      const resolve = await fetch('/deleteItem',
+         {
+            method: 'POST',
+            headers: {
+               'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ itemName: `${itemName}` })
+         })
+      const data = await resolve.json()
+      liftedChildState(data)
       console.log(`remove item ${itemName}`)
-
-
-
    }
+
    const productListDisplay = (
       generatedObjectForDisplay,
       visibilityOfEachListObjectUpdate,

@@ -152,7 +152,7 @@ const PickingPanel = function () {
                     <>
                         <GenerateSetOfItems liftedChildState={setVegAndFruitTransmitedData}
                             setOfItemData={vegAndFruitTransmitedData}
-                            endpoint={'http://localhost:8000/vegAndFruit'} />
+                            endpoint={'/vegAndFruit'} />
                     </>
                 }
                 {
@@ -168,7 +168,7 @@ const PickingPanel = function () {
                     <>
                         <Dinner liftedChildState={setDinnerTransmitedData}
                             setOfItemData={dinnerTransmitedData}
-                            endpoint={'/dinners'} />
+                            endpoint={'http://localhost:8000/dinners'} />
                     </>
                 }
                 {
