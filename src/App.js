@@ -8,7 +8,7 @@ function App() {
     <>
       <div className="App">
         <PickingPanel />
-124
+12345
         <BottomLinks />
       </div>
 
